@@ -15,6 +15,9 @@ class CreateServicosTable extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome');
+            $table->integer('idCategoria')->unsigned();
+            $table->foreign('idCategoria')->references('id')->on('categorias');
             $table->timestamps();
         });
     }
