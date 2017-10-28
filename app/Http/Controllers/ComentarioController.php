@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Comentario;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Comentario;
 
 class ComentarioController extends Controller
 {
@@ -22,9 +26,17 @@ class ComentarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $comentario = new Comentario();
+
+        $comentario->texto = $request->texto;
+        $comentario->id_comentarista = $request->id_comentarista;
+        $comentario->id_prestador = $request->id_prestador;
+
+        $comentario->save();
+
+        return $comentario;
     }
 
     /**
@@ -41,21 +53,21 @@ class ComentarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Comentario  $comentario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comentario $comentario)
+    public function show($id)
     {
-        //
+        return Comentario::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comentario  $comentario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comentario $comentario)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +76,34 @@ class ComentarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comentario  $comentario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comentario $comentario)
+    public function update(Request $request, $id)
     {
-        //
+        $comentario = Comentario::find($id);
+
+        $comentario->texto = $request->texto;
+        $comentario->id_comentarista = $request->id_comentarista;
+        $comentario->id_prestador = $request->id_prestador;
+
+        $comentario->save();
+
+        return $comentario;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comentario  $comentario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function destroy($id)
     {
-        //
+        $comentario = Comentario::find($id);
+
+        $comentario->delete();
+
+        return true;
     }
 }

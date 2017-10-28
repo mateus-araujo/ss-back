@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Plano;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Plano;
 
 class PlanoController extends Controller
 {
@@ -22,9 +26,17 @@ class PlanoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $plano = new Plano();
+
+        $plano->nome  = $request->nome;
+        $plano->preco = $request->preco;
+        $plano->pessoa = $request->pessoa;
+
+        $plano->save();
+
+        return $plano;
     }
 
     /**
@@ -41,21 +53,21 @@ class PlanoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Plano  $plano
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Plano $plano)
+    public function show($id)
     {
-        //
+        return Plano::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Plano  $plano
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plano $plano)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +76,35 @@ class PlanoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Plano  $plano
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plano $plano)
+    public function update(Request $request, $id)
     {
-        //
+        $plano = Plano::find($id);
+
+        $plano->nome  = $request->nome;
+        $plano->preco = $request->preco;
+        $plano->pessoa = $request->pessoa;
+
+        $plano->save();
+
+        return $plano;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Plano  $plano
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plano $plano)
+    public function destroy($id)
     {
-        //
+        $plano = Pessoa::find($id);
+
+        if($plano)
+            $plano->delete();
+
+        return true;
     }
 }

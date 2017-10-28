@@ -1702,18 +1702,18 @@ FormDebugComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/compartilhado/models/categoria.model.ts":
+/***/ "../../../../../src/app/compartilhado/models/categoria-servico.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Categoria; });
-var Categoria = (function () {
-    function Categoria() {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriaServico; });
+var CategoriaServico = (function () {
+    function CategoriaServico() {
     }
-    return Categoria;
+    return CategoriaServico;
 }());
 
-//# sourceMappingURL=categoria.model.js.map
+//# sourceMappingURL=categoria-servico.model.js.map
 
 /***/ }),
 
@@ -2733,7 +2733,7 @@ module.exports = "<p-dataTable [value]=\"categorias\">\n  <p-column field=\"id\"
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrudComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/categoria.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_servico_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/categoria-servico.model.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
@@ -2793,7 +2793,7 @@ var CrudComponent = (function () {
                 .subscribe(function (dados) {
                 //console.log(dados);
                 //console.log(this.formulario.value);
-                var categoria = new __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_model__["a" /* Categoria */]();
+                var categoria = new __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_servico_model__["a" /* CategoriaServico */]();
                 categoria.nome = _this.formulario.value.categoria;
                 _this.addCategoria(categoria);
                 _this.formulario.reset();

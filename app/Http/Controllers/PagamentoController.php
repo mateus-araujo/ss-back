@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Pagamento;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Pagamento;
+
 
 class PagamentoController extends Controller
 {
@@ -22,9 +27,18 @@ class PagamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $pagamento = new Pagamento();
+        $pagamento->valor = $request->valor;
+        $pagamento->id_plano = $request->id_plano;
+        $pagamento->id_prestador = $request->id_prestador;
+        $pagamento->data_vencimento = $request->data_vencimento;
+        $pagamento->data_pagamento = $request->data_pagamento;
+
+        $pagamento->save();
+
+        return $pagamento;
     }
 
     /**
@@ -41,45 +55,58 @@ class PagamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pagamento  $pagamento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Pagamento $pagamento)
+    public function show($id)
     {
-        //
+        return Pagamento::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pagamento  $pagamento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pagamento $pagamento)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pagamento  $pagamento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pagamento $pagamento)
+    public function update(Request $request, $id)
     {
-        //
+        $pagamento = Pagamento::find($id);
+        $pagamento->valor = $request->valor;
+        $pagamento->id_plano = $request->id_plano;
+        $pagamento->id_prestador = $request->id_prestador;
+        $pagamento->data_vencimento = $request->data_vencimento;
+        $pagamento->data_pagamento = $request->data_pagamento;
+
+        $pagamento->save();
+
+        return $pagamento;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pagamento  $pagamento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pagamento $pagamento)
+    public function destroy($id)
     {
-        //
+        $pagamento = Pagamento::find($id);
+
+        $pagamento->delete();
+
+        return true;
     }
 }

@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuscasTable extends Migration
+class CreateCategoriaServicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +12,9 @@ class CreateBuscasTable extends Migration
      */
     public function up()
     {
-        Schema::create('buscas', function (Blueprint $table) {
+        Schema::create('categoria_servicos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateBuscasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buscas');
+        Schema::drop("categoria_servicos");
     }
 }

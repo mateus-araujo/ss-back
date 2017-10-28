@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -15,7 +14,14 @@ class CreatePagamentosTable extends Migration
     {
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->float('valor');
+            $table->integer("id_plano")->unsigned();
+            $table->integer("id_prestador")->unsigned();
+            $table->date("data_vencimento");
+            $table->date("data_pagamento");
+
+            $table->foreign("id_plano")->references("id")->on("planos")->onDelete("cascade");
+            $table->foreign("id_prestador")->references("id")->on("prestadores")->onDelete("cascade");
         });
     }
 
@@ -26,6 +32,6 @@ class CreatePagamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagamentos');
+        Schema::drop("pagamentos");
     }
 }

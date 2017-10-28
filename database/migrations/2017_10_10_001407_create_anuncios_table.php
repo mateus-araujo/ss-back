@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePessoaJuridicasTable extends Migration
+class CreateAnunciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +12,12 @@ class CreatePessoaJuridicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa_juridicas', function (Blueprint $table) {
+        Schema::create('anuncios', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string("path_to_banner");
+            $table->integer("id_prestador")->unsigned();
+
+            $table->foreign("id_prestador")->references("id")->on("prestadores")->onDelete("cascade");
         });
     }
 
@@ -26,6 +28,6 @@ class CreatePessoaJuridicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa_juridicas');
+        Schema::drop("anuncios");
     }
 }

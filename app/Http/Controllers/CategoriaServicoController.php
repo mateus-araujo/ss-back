@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Categoria;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\CategoriaServico;
+
+class CategoriaServicoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return Categoria::all();
+        return CategoriaServico::all();
     }
 
     /**
@@ -22,9 +27,16 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+
+    public function create(Request $request) {
+
+        $catServ = new CategoriaServico();
+
+        $catServ->nome = $request->nome;
+
+        $catServ->save();
+
+        return $catServ;
     }
 
     /**
@@ -33,41 +45,51 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        return Categoria::create($request->all());
+        return CategoriaServico::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categoria)
+
+    public function show($id)
     {
-        //
+        return CategoriaServico::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+
+    public function update(Request $request, $id)
     {
-        //
+        $catServ = CategoriaServico::find($id);
+
+        $catServ->nome = $request->nome;
+
+        $catServ->save();
+
+        return $catServ;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+
+    public function edit($id)
     {
         //
     }
@@ -75,11 +97,15 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    
+    public function destroy($id)
     {
-        //
+        $catServ = CategoriaServico::find($id);   
+        $catServ->delete();
+
+        return true;
     }
 }

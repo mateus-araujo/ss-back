@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Anuncio;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Anuncio;
 
 class AnuncioController extends Controller
 {
@@ -22,9 +26,16 @@ class AnuncioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $anuncio = new Anuncio();
+
+        $anuncio->path_to_banner = $request->path_to_banner;
+        $anuncio->id_prestador = $request->id_prestador;
+
+        $anuncio->save();
+
+        return $anuncio;
     }
 
     /**
@@ -41,45 +52,56 @@ class AnuncioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Anuncio  $anuncio
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Anuncio $anuncio)
+    public function show($id)
     {
-        //
+        return Anuncio::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Anuncio  $anuncio
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Anuncio $anuncio)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Anuncio  $anuncio
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Anuncio $anuncio)
+    public function update(Request $request, $id)
     {
-        //
+        $anuncio = Anuncio::find($id);
+
+        $anuncio->path_to_banner = $request->path_to_banner;
+        $anuncio->id_prestador = $request->id_prestador;
+
+        $anuncio->save();
+
+        return $anuncio;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Anuncio  $anuncio
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Anuncio $anuncio)
+    public function destroy($id)
     {
-        //
+        $anuncio = Anuncio::find($id);
+
+        $anuncio->delete();
+
+        return true;
     }
 }

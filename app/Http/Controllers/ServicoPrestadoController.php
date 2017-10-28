@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ServicoPrestado;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+
+use App\ServicoPrestado;
 
 class ServicoPrestadoController extends Controller
 {
@@ -22,9 +27,18 @@ class ServicoPrestadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $servPrest = new ServicoPrestado();
+
+        $servPrest->id_servico = $request->id_servico;
+        $servPrest->id_prestador = $request->id_prestador;
+        $servPrest->solicitante = $request->solicitante;
+        $servPrest->confirmado = false;
+
+        $servPrest->save();
+
+        return $servPrest;
     }
 
     /**
@@ -41,45 +55,59 @@ class ServicoPrestadoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ServicoPrestado  $servicoPrestado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ServicoPrestado $servicoPrestado)
+    public function show($id)
     {
-        //
+        return ServicoPrestado::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ServicoPrestado  $servicoPrestado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ServicoPrestado $servicoPrestado)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ServicoPrestado  $servicoPrestado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServicoPrestado $servicoPrestado)
+    public function update(Request $request, $id)
     {
-        //
+        $servPrest = ServicoPrestado::find($id);
+
+        $servPrest->id_servico = $request->id_servico;
+        $servPrest->id_prestador = $request->id_prestador;
+        $servPrest->solicitante = $request->solicitante;
+        $servPrest->confirmado = false;
+
+        $servPrest->save();
+
+        return $servPrest;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ServicoPrestado  $servicoPrestado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ServicoPrestado $servicoPrestado)
+    public function destroy($id)
     {
-        //
+        $sp = ServicoPrestado::find($id);
+        
+        if ($sp)
+            $sp->delete();
+
+        return true;
     }
 }

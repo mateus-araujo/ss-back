@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Busca;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Busca;
 
 class BuscaController extends Controller
 {
@@ -22,9 +26,17 @@ class BuscaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $busca = new Busca();
+
+        $busca->id_categoria = $request->id_categoria;
+        $busca->id_servico = $request->id_servico;
+        $busca->texto_busca = $request->texto_busca;
+
+        $busca->save();
+
+        return $busca;
     }
 
     /**
@@ -41,21 +53,21 @@ class BuscaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Busca  $busca
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Busca $busca)
+    public function show($id)
     {
-        //
+        return Busca::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Busca  $busca
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Busca $busca)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +76,34 @@ class BuscaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Busca  $busca
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Busca $busca)
+    public function update(Request $request, $id)
     {
-        //
+        $busca = Busca::find($id);
+
+        $busca->id_categoria = $request->id_categoria;
+        $busca->id_servico = $request->id_servico;
+        $busca->texto_busca = $request->texto_busca;
+
+        $busca->save();
+
+        return $busca;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Busca  $busca
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Busca $busca)
+    public function destroy($id)
     {
-        //
+        $busca = Busca::find($id);
+
+        $busca->delete();
+
+        return true;
     }
 }

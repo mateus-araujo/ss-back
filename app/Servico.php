@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Servico extends Model
 {
-    protected $fillable = [
-        'id',
-        'nome',
-        'idCategoria'
-    ];
+    protected $table = "servicos";
+
+    protected $fillable = ['nome', 'id_categoria'];
 }

@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicoPrestadosTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +12,15 @@ class CreateServicoPrestadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('servico_prestados', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password', 60);
+            $table->integer("tipo_usuario");
+
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateServicoPrestadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servico_prestados');
+        Schema::drop('usuarios');
     }
 }

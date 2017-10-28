@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Servico;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Servico;
 
 class ServicoController extends Controller
 {
@@ -22,9 +26,16 @@ class ServicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $servico = new Servico();
+
+        $servico->nome = $request->nome;
+        $servico->id_categoria = $request->id_categoria;
+
+        $servico->save();
+
+        return $servico;
     }
 
     /**
@@ -41,45 +52,52 @@ class ServicoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Servico  $servico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Servico $servico)
+    public function show($id)
     {
-        //
+        return Servico::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Servico  $servico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Servico $servico)
+    public function edit($id)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Servico  $servico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servico $servico)
+    public function update(Request $request, $id)
     {
-        //
+        $servico = Servico::find($id);
+
+        $servico->nome = $request->nome;
+        $servico->id_categoria = $request->id_categoria;
+
+        $servico->save();
+
+        return $servico;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Servico  $servico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servico $servico)
+    public function destroy($id)
     {
-        //
+        Servico::find($id);
     }
 }
