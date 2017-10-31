@@ -662,16 +662,19 @@ module.exports = "<div class=\"ui-g\">\n  <div class=\"ui-g-12\">\n    <h3 class
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PFisicaComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_pessoa_fisica_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/pessoa-fisica.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_prestador_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/prestador.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_models_usuario_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/usuario.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_primeng_primeng__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -681,6 +684,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
 
 
 
@@ -732,11 +738,11 @@ var PFisicaComponent = (function () {
     }
     PFisicaComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
-            nomeCompleto: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
-            email: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
-            usuario: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
-            senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
-            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
+            nomeCompleto: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]],
+            email: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].email]],
+            usuario: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]],
+            senha: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].minLength(6)]],
+            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].minLength(6)]],
             tipo_usuario: [1],
             prestador: [false],
         });
@@ -746,28 +752,28 @@ var PFisicaComponent = (function () {
         if (this.formulario.controls['prestador'].value) {
             this.formulario.get('tipo_usuario').patchValue(2);
             this.formulario.addControl('prestadorDados', this.formBuilder.group({
-                cpf: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                rg: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
-                sexo: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                dataNascimento: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
+                cpf: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                rg: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]],
+                sexo: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                dataNascimento: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]],
                 telefone: this.formBuilder.group({
-                    telefone1: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                    telefone2: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+                    telefone1: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                    telefone2: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
                 }),
                 endereco: this.formBuilder.group({
-                    cep: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                    estado: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                    cidade: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                    bairro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                    logradouro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    cep: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                    estado: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                    cidade: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                    bairro: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                    logradouro: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
                     complemento: [null],
-                    numero: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+                    numero: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
                 }),
                 servicosPrestados: this.formBuilder.array([
                     this.createServico(qtd)
                 ]),
                 qtdServicos: [qtd],
-                descricao: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+                descricao: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
             }));
         }
         else {
@@ -801,6 +807,30 @@ var PFisicaComponent = (function () {
             accept: function () {
                 console.log(_this.formulario);
                 if (_this.formulario.valid) {
+                    var usuario = new __WEBPACK_IMPORTED_MODULE_2__compartilhado_models_usuario_model__["a" /* Usuario */]();
+                    usuario.name = _this.formulario.get('nomeCompleto').value;
+                    usuario.email = _this.formulario.get('email').value;
+                    usuario.username = _this.formulario.get('usuario').value;
+                    usuario.password = _this.formulario.get('senha').value;
+                    usuario.tipo_usuario = _this.formulario.get('tipo_usuario').value;
+                    if (usuario.tipo_usuario === 2) {
+                        var prestador = new __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_prestador_model__["a" /* Prestador */]();
+                        prestador.telefone = _this.formulario.get('prestadorDados.telefone.telefone1').value;
+                        prestador.celular = _this.formulario.get('prestadorDados.telefone.telefone2').value;
+                        prestador.cep = _this.formulario.get('prestadorDados.endereco.cep').value;
+                        prestador.bairro = _this.formulario.get('prestadorDados.endereco.bairro').value;
+                        prestador.cidade = _this.formulario.get('prestadorDados.endereco.cidade').value;
+                        prestador.estado = _this.formulario.get('prestadorDados.endereco.estado').value;
+                        prestador.numero = _this.formulario.get('prestadorDados.endereco.numero').value;
+                        prestador.id_serv_1 = _this.formulario.get('prestadorDados.servicosPrestados').value[0].categoria.id;
+                        prestador.id_serv_2 = _this.formulario.get('prestadorDados.servicosPrestados').value[1].categoria.id;
+                        prestador.id_serv_3 = _this.formulario.get('prestadorDados.servicosPrestados').value[2].categoria.id;
+                        prestador.descricao = _this.formulario.get('prestadorDados.descricao').value;
+                        prestador.tipo = '2';
+                        var pfisica = new __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_pessoa_fisica_model__["a" /* PessoaFisica */]();
+                        pfisica.cpf = _this.formulario.get('prestadorDados.cpf').value;
+                        pfisica.sexo = _this.formulario.get('prestadorDados.cpf').value;
+                    }
                     _this.msgs = [];
                     _this.msgs = [{
                             severity: 'success',
@@ -839,7 +869,7 @@ var PFisicaComponent = (function () {
             console.log(field);
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
@@ -862,7 +892,8 @@ var PFisicaComponent = (function () {
     };
     PFisicaComponent.prototype.buscarServicos = function (i) {
         var _this = this;
-        this.categoriaServicoService.getServicos(this.formulario.get('prestadorDados.servicosPrestados').value[i].categoria.id)
+        var id_categoria = this.formulario.get('prestadorDados.servicosPrestados').value[i].categoria.id;
+        this.categoriaServicoService.getServicos(id_categoria)
             .then(function (dados) {
             _this.servicosI = dados;
             if (i === 0) {
@@ -874,7 +905,8 @@ var PFisicaComponent = (function () {
             else if (i === 2) {
                 _this.servicos3 = [];
             }
-            // console.log(this.formulario.get('prestadorDados.servicosPrestados').value[i]);
+            // console.log(i);
+            // console.log(this.formulario.get('prestadorDados.servicosPrestados').value[i].categoria.id);
             for (var index = 0; index < dados.length; index++) {
                 if (i === 0) {
                     _this.servicos1.push({
@@ -912,8 +944,8 @@ var PFisicaComponent = (function () {
     PFisicaComponent.prototype.createServico = function (qtd) {
         return this.formBuilder.group({
             id: [qtd],
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-            servico: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+            servico: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
         });
     };
     PFisicaComponent.prototype.addServico = function () {
@@ -1000,13 +1032,13 @@ var PFisicaComponent = (function () {
     return PFisicaComponent;
 }());
 PFisicaComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["Component"])({
         selector: 'app-pfisica',
         template: __webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.html"),
         styles: [__webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]]
+        providers: [__WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_8__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__angular_router__["Router"]) === "function" && _f || Object])
 ], PFisicaComponent);
 
 var _a, _b, _c, _d, _e, _f;
@@ -1044,16 +1076,19 @@ module.exports = "<div class=\"ui-g\">\n  <div class=\"ui-g-12\">\n    <h3 class
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PJuridicaComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_pessoa_juridica_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/pessoa-juridica.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_prestador_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/prestador.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_models_usuario_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/usuario.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_primeng_primeng__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1063,6 +1098,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
 
 
 
@@ -1115,32 +1153,32 @@ var PJuridicaComponent = (function () {
     PJuridicaComponent.prototype.ngOnInit = function () {
         var qtd = 1;
         this.formulario = this.formBuilder.group({
-            email: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
-            usuario: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
-            senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
-            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
-            tipo_usuario: [3],
-            cnpj: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-            nomeFantasia: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-            razaoSocial: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            email: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].email]],
+            usuario: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]],
+            senha: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].minLength(6)]],
+            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].minLength(6)]],
+            tipo_usuario: [2],
+            cnpj: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+            nomeFantasia: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+            razaoSocial: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
             telefone: this.formBuilder.group({
-                telefone1: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                telefone2: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+                telefone1: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                telefone2: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
             }),
             endereco: this.formBuilder.group({
-                cep: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                estado: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                cidade: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                bairro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                logradouro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                complemento: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-                numero: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+                cep: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                estado: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                cidade: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                bairro: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                logradouro: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                complemento: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+                numero: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
             }),
             servicosPrestados: this.formBuilder.array([
                 this.createServico(qtd)
             ]),
             qtdServicos: [qtd],
-            descricao: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+            descricao: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
         });
     };
     /* passwordConfirming(c: AbstractControl): { invalid: boolean } {
@@ -1173,14 +1211,55 @@ var PJuridicaComponent = (function () {
             accept: function () {
                 console.log(_this.formulario);
                 if (_this.formulario.valid) {
-                    _this.http
-                        .post('https://httpbin.org/post', JSON.stringify(_this.formulario.value))
-                        .map(function (res) { return res; })
-                        .subscribe(function (dados) {
-                        console.log(dados);
-                        // this.formulario.reset();
-                    }, function (error) { return alert('erro'); });
-                    _this.submitted = true;
+                    /* email: [null, [Validators.required, Validators.email]],
+                      usuario: [null, [Validators.required]],
+                      senha: [null, [Validators.required, Validators.minLength(6)]],
+                      conf_senha: [null, [Validators.required, Validators.minLength(6)]],
+                      tipo_usuario: [3],
+                      cnpj: [null, Validators.required],
+                      nomeFantasia: [null, Validators.required],
+                      razaoSocial: [null, Validators.required],
+                      telefone: this.formBuilder.group({
+                        telefone1: [null, Validators.required],
+                        telefone2: [null, Validators.required]
+                      }),
+                      endereco: this.formBuilder.group({
+                        cep: [null, Validators.required],
+                        estado: [null, Validators.required],
+                        cidade: [null, Validators.required],
+                        bairro: [null, Validators.required],
+                        logradouro: [null, Validators.required],
+                        complemento: [null, Validators.required],
+                        numero: [null, Validators.required]
+                      }),
+                      servicosPrestados: this.formBuilder.array([
+                        this.createServico(qtd)
+                      ]),
+                      qtdServicos: [qtd],
+                      descricao: [null, Validators.required] */
+                    var usuario = new __WEBPACK_IMPORTED_MODULE_2__compartilhado_models_usuario_model__["a" /* Usuario */]();
+                    usuario.name = _this.formulario.get('nomeFantasia').value;
+                    usuario.email = _this.formulario.get('email').value;
+                    usuario.username = _this.formulario.get('usuario').value;
+                    usuario.password = _this.formulario.get('senha').value;
+                    usuario.tipo_usuario = _this.formulario.get('tipo_usuario').value;
+                    var prestador = new __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_prestador_model__["a" /* Prestador */]();
+                    prestador.telefone = _this.formulario.get('telefone.telefone1').value;
+                    prestador.celular = _this.formulario.get('telefone.telefone2').value;
+                    prestador.cep = _this.formulario.get('endereco.cep').value;
+                    prestador.bairro = _this.formulario.get('endereco.bairro').value;
+                    prestador.cidade = _this.formulario.get('endereco.cidade').value;
+                    prestador.estado = _this.formulario.get('endereco.estado').value;
+                    prestador.numero = _this.formulario.get('endereco.numero').value;
+                    prestador.id_serv_1 = _this.formulario.get('servicosPrestados').value[0].categoria.id;
+                    prestador.id_serv_2 = _this.formulario.get('servicosPrestados').value[1].categoria.id;
+                    prestador.id_serv_3 = _this.formulario.get('servicosPrestados').value[2].categoria.id;
+                    prestador.descricao = _this.formulario.get('descricao').value;
+                    prestador.tipo = '2';
+                    var pjuridica = new __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_pessoa_juridica_model__["a" /* PessoaJuridica */]();
+                    pjuridica.cnpj = _this.formulario.get('cnpj').value;
+                    pjuridica.nome_fantasia = _this.formulario.get('nomeFantasia').value;
+                    pjuridica.razao_social = _this.formulario.get('razaoSocial').value;
                     _this.msgs = [];
                     _this.msgs = [{
                             severity: 'success',
@@ -1220,7 +1299,7 @@ var PJuridicaComponent = (function () {
             console.log(field);
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
@@ -1293,8 +1372,8 @@ var PJuridicaComponent = (function () {
     PJuridicaComponent.prototype.createServico = function (qtd) {
         return this.formBuilder.group({
             id: [qtd],
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-            servico: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required],
+            servico: [null, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]
         });
     };
     PJuridicaComponent.prototype.addServico = function () {
@@ -1377,13 +1456,13 @@ var PJuridicaComponent = (function () {
     return PJuridicaComponent;
 }());
 PJuridicaComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["Component"])({
         selector: 'app-pjuridica',
         template: __webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.html"),
         styles: [__webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]]
+        providers: [__WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_8__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__angular_router__["Router"]) === "function" && _f || Object])
 ], PJuridicaComponent);
 
 var _a, _b, _c, _d, _e, _f;
@@ -1714,6 +1793,51 @@ var CategoriaServico = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/compartilhado/models/pessoa-fisica.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PessoaFisica; });
+var PessoaFisica = (function () {
+    function PessoaFisica() {
+    }
+    return PessoaFisica;
+}());
+
+//# sourceMappingURL=pessoa-fisica.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/compartilhado/models/pessoa-juridica.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PessoaJuridica; });
+var PessoaJuridica = (function () {
+    function PessoaJuridica() {
+    }
+    return PessoaJuridica;
+}());
+
+//# sourceMappingURL=pessoa-juridica.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/compartilhado/models/prestador.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Prestador; });
+var Prestador = (function () {
+    function Prestador() {
+    }
+    return Prestador;
+}());
+
+//# sourceMappingURL=prestador.model.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/compartilhado/models/servico.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1726,6 +1850,21 @@ var Servico = (function () {
 }());
 
 //# sourceMappingURL=servico.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/compartilhado/models/usuario.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Usuario; });
+var Usuario = (function () {
+    function Usuario() {
+    }
+    return Usuario;
+}());
+
+//# sourceMappingURL=usuario.model.js.map
 
 /***/ }),
 

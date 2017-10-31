@@ -2,35 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
-
-
-use App\Usuario;
-use App\Prestador;
-use App\PessoaJuridica;
 use App\PessoaFisica;
-
+use App\PessoaJuridica;
+use App\Prestador;
+use App\Usuario;
 use Auth;
 use Hash;
+use Illuminate\Http\Request;
+
 
 class UsuarioController extends Controller
-{   
+{
 
-    public function doLogin(Request $request) {
+    public function doLogin(Request $request)
+    {
         if (Auth::attempt(
-                ['email' => $request->email,
-                  'password' => $request->password])) {
+            ['email' => $request->email,
+                'password' => $request->password])) {
             return Auth::user();
-        } 
-        else 
+        } else
             throw new \Exception("Não foi possível realizar o login. Tente novamente");
     }
 
-    public function doLogout() {
+    public function doLogout()
+    {
         Auth::logout();
 
         return Auth::user(); // tem que ser nulo
@@ -53,16 +49,16 @@ class UsuarioController extends Controller
      */
     public function create(Request $request)
     {
-        $alreadyUser = Usuario::where('email', '=', $request->email )->first();
-        if ($alreadyUser) 
+        $alreadyUser = Usuario::where('email', '=', $request->email)->first();
+        if ($alreadyUser)
             throw new \Exception("Este email já está sendo usado");
-            
+
         $usuario = new Usuario();
 
-        $usuario->name =  $request->name;
-        $usuario->username =  $request->username;
-        $usuario->email =  $request->email;
-        $usuario->password =  bcrypt($request->password);
+        $usuario->name = $request->name;
+        $usuario->username = $request->username;
+        $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
         $usuario->tipo_usuario = $request->tipo_usuario;
 
         $usuario->save();
@@ -70,9 +66,8 @@ class UsuarioController extends Controller
         Auth::login($usuario);
 
 
-
-        // Se o tipo do usuário for prestador 
-        if ($usuario->tipo_usuario == "2") { 
+        // Se o tipo do usuário for prestador
+        if ($usuario->tipo_usuario == "2") {
 
             $usuarioId = \DB::table("usuarios")->where("email", '=', $usuario->email)->select("id")->get();
 
@@ -80,12 +75,12 @@ class UsuarioController extends Controller
 
             $prestador->usuario_id = $usuarioId[0]->id;
             $prestador->telefone = $request->telefone;
-            $prestador->celular  = $request->celular;
-            $prestador->cep  = $request->cep;
-            $prestador->bairro  = $request->bairro;
-            $prestador->cidade  = $request->cidade;
-            $prestador->estado  = $request->estado;
-            $prestador->numero  = $request->numero;
+            $prestador->celular = $request->celular;
+            $prestador->cep = $request->cep;
+            $prestador->bairro = $request->bairro;
+            $prestador->cidade = $request->cidade;
+            $prestador->estado = $request->estado;
+            $prestador->numero = $request->numero;
 
             $prestador->id_serv_1 = $request->id_serv_1;
             $prestador->id_serv_2 = $request->id_serv_2;
@@ -110,8 +105,7 @@ class UsuarioController extends Controller
 
                 $pessoaJur->save();
 
-            } 
-            else { // pessoa física
+            } else { // pessoa física
                 $pessoaFisica = new PessoaFisica();
                 $pessoaFisica->cpf = $request->cpf;
                 $pessoaFisica->sexo = $request->sexo;
@@ -130,7 +124,7 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -141,48 +135,49 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        
+    public function show($id)
+    {
+
         return Usuario::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
-        if ($usuario == null) 
+        if ($usuario == null)
             throw new \Exception("Este usuario é inexistente.");
-        
-        $usuario->name =  $request->name;
-        $usuario->username =  $request->username;
-        $usuario->email =  $request->email;
-        $usuario->password =  bcrypt($request->password);
+
+        $usuario->name = $request->name;
+        $usuario->username = $request->username;
+        $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
         $usuario->tipo_usuario = $request->tipo_usuario;
 
         $usuario->save();
 
         // Se o tipo do usuário for prestador 
-        if ($usuario->tipo_usuario == "2") { 
+        if ($usuario->tipo_usuario == "2") {
 
             $usuarioId = \DB::table("usuarios")->where("email", '=', $usuario->email)->select("id")->get();
 
             $prestador = Prestador::where('usuario_id', '=', $usuarioId[0]->id);
 
             $prestador->telefone = $request->telefone;
-            $prestador->celular  = $request->celular;
-            $prestador->cep  = $request->cep;
-            $prestador->bairro  = $request->bairro;
-            $prestador->cidade  = $request->cidade;
-            $prestador->estado  = $request->estado;
-            $prestador->numero  = $request->numero;
+            $prestador->celular = $request->celular;
+            $prestador->cep = $request->cep;
+            $prestador->bairro = $request->bairro;
+            $prestador->cidade = $request->cidade;
+            $prestador->estado = $request->estado;
+            $prestador->numero = $request->numero;
 
             $prestador->id_serv_1 = $request->id_serv_1;
             $prestador->id_serv_2 = $request->id_serv_2;
@@ -203,12 +198,11 @@ class UsuarioController extends Controller
                 $pessoaJur->cnpj = $request->cnpj;
                 $pessoaJur->nome_fantasia = $request->nome_fantasia;
                 $pessoaJur->razao_social = $request->razao_social;
-                
+
 
                 $pessoaJur->save();
 
-            } 
-            else { // pessoa física
+            } else { // pessoa física
                 $pessoaFisica = PessoaFisica::where("prestador_id", "=", $prestadorId[0]->id);
                 $pessoaFisica->cpf = $request->cpf;
                 $pessoaFisica->sexo = $request->sexo;
@@ -226,19 +220,19 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -246,6 +240,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $usuario->delete();
 
-         return response('O usuário foi deletado com sucesso!', 201);
+        return response('O usuário foi deletado com sucesso!', 201);
     }
 }
