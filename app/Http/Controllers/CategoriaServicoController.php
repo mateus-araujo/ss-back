@@ -106,6 +106,6 @@ class CategoriaServicoController extends Controller
         $catServ = CategoriaServico::find($id);   
         $catServ->delete();
 
-        return true;
+        return $catServ;
     }
 }

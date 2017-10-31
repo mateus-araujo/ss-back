@@ -233,7 +233,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/busca/busca.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p-dialog header=\"Buscar\" [(visible)]=\"mostrar\" [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n  <form [formGroup]=\"formulario\" (ngSubmit)=\"buscar()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Nome: </label>\n          </div>\n\n          <div class=\"ui-g-8\">\n            <input type=\"text\" pInputText formControlName=\"nome\" placeholder=\"Nome do profissional\">\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Categoria: </label>\n          </div>\n          <div class=\"ui-g-8\">\n            <p-dropdown [options]=\"categorias\" filter=\"filter\" formControlName=\"categoria\" [style]=\"{'width':'220px'}\" placeholder=\"Selecione uma categoria\"\n              (onChange)=\"buscarServicos()\">\n            </p-dropdown>\n          </div>\n          <div class=\"ui-g-12\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria')\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n            </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Serviço: </label>\n          </div>\n          <div class=\"ui-g-8\">\n            <p-dropdown [options]=\"servicos\" filter=\"filter\" formControlName=\"servico\" [style]=\"{'width':'220px'}\" placeholder=\"Selecione um serviço\">\n            </p-dropdown>\n          </div>\n        </div>\n\n        <div class=\"ui-g-2\"></div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"submit\" (click)=\"buscar()\" label=\"Buscar\"></button>\n        </div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"button\" (click)=\"voltar()\" label=\"Voltar\"></button>\n        </div>\n        <div class=\"ui-g-2\"></div>\n      </div>\n    </fieldset>\n  </form>\n</p-dialog>\n\n<button pButton label=\"Buscar\" (click)=\"mostrarBusca()\" icon=\"fa-search\">\n</button>"
+module.exports = "<p-dialog header=\"Buscar\" [(visible)]=\"mostrar\" [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n  <form [formGroup]=\"formulario\" (ngSubmit)=\"buscar()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Nome: </label>\n          </div>\n\n          <div class=\"ui-g-8\">\n            <input type=\"text\" pInputText formControlName=\"nome\" placeholder=\"Nome do profissional\">\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Categoria: </label>\n          </div>\n          <div class=\"ui-g-8\">\n            <p-dropdown [options]=\"categorias\" filter=\"filter\" formControlName=\"categoria\" [style]=\"{'width':'220px'}\" placeholder=\"Selecione uma categoria\"\n              (onChange)=\"buscarServicos()\">\n            </p-dropdown>\n          </div>\n          <div class=\"ui-g-12\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria')\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-4\">\n            <label>Serviço: </label>\n          </div>\n          <div class=\"ui-g-8\">\n            <p-dropdown [options]=\"servicos\" filter=\"filter\" formControlName=\"servico\" [style]=\"{'width':'220px'}\" placeholder=\"Selecione um serviço\">\n            </p-dropdown>\n          </div>\n        </div>\n\n        <div class=\"ui-g-2\"></div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"submit\" (click)=\"buscar()\" label=\"Buscar\"></button>\n        </div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"button\" (click)=\"voltar()\" label=\"Voltar\"></button>\n        </div>\n        <div class=\"ui-g-2\"></div>\n      </div>\n    </fieldset>\n  </form>\n</p-dialog>\n\n<button pButton label=\"Buscar\" (click)=\"mostrarBusca()\" icon=\"fa-search\">\n</button>"
 
 /***/ }),
 
@@ -242,10 +242,11 @@ module.exports = "<p-dialog header=\"Buscar\" [(visible)]=\"mostrar\" [contentSt
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BuscaComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -259,15 +260,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var BuscaComponent = (function () {
-    function BuscaComponent(formBuilder, dropdownService, http) {
+    function BuscaComponent(formBuilder, categoriaServicoService, dropdownService, http) {
         var _this = this;
         this.formBuilder = formBuilder;
+        this.categoriaServicoService = categoriaServicoService;
         this.dropdownService = dropdownService;
         this.http = http;
-        this.mostrar = false;
-        this.dropdownService.getCategorias()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getCategorias()
+            .then(function (dados) {
             _this.categoriasI = dados;
             _this.categorias = [];
             for (var index = 0; index < dados.length; index++) {
@@ -284,7 +286,7 @@ var BuscaComponent = (function () {
     BuscaComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
             nome: [null],
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
             servico: [null]
         });
     };
@@ -299,7 +301,7 @@ var BuscaComponent = (function () {
         Object.keys(formGroup.controls).forEach(function (field) {
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
@@ -315,7 +317,7 @@ var BuscaComponent = (function () {
                 .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
                 .map(function (res) { return res; })
                 .subscribe(function (dados) {
-                //console.log(dados);
+                // console.log(dados);
                 console.log(_this.formulario.value);
                 _this.formulario.reset();
                 _this.mostrar = false;
@@ -329,38 +331,34 @@ var BuscaComponent = (function () {
     };
     BuscaComponent.prototype.buscarServicos = function () {
         var _this = this;
-        this.dropdownService.getServicos()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getServicos(this.formulario.get('categoria').value.id).then(function (dados) {
             _this.servicosI = dados;
             _this.servicos = [];
-            //console.log(this.formulario.get('categoria').value);
-            var sCategoria = _this.formulario.get('categoria').value.id;
+            // console.log(this.formulario.get('categoria').value);
             for (var index = 0; index < dados.length; index++) {
-                if ((sCategoria == dados[index].idCategoria)) {
-                    _this.servicos.push({
-                        label: dados[index].nome,
-                        value: {
-                            id: dados[index].id,
-                            nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
-                        }
-                    });
-                }
+                _this.servicos.push({
+                    label: dados[index].nome,
+                    value: {
+                        id: dados[index].id,
+                        nome: dados[index].nome,
+                        id_categoria: dados[index].id_categoria
+                    }
+                });
             }
         });
     };
     return BuscaComponent;
 }());
 BuscaComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["Component"])({
         selector: 'app-busca',
         template: __webpack_require__("../../../../../src/app/busca/busca.component.html"),
         styles: [__webpack_require__("../../../../../src/app/busca/busca.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]) === "function" && _d || Object])
 ], BuscaComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=busca.component.js.map
 
 /***/ }),
@@ -370,13 +368,14 @@ var _a, _b, _c;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BuscaModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_compartilhado_module__ = __webpack_require__("../../../../../src/app/compartilhado/compartilhado.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__busca_component__ = __webpack_require__("../../../../../src/app/busca/busca.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_compartilhado_module__ = __webpack_require__("../../../../../src/app/compartilhado/compartilhado.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__busca_component__ = __webpack_require__("../../../../../src/app/busca/busca.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -389,25 +388,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var BuscaModule = (function () {
     function BuscaModule() {
     }
     return BuscaModule;
 }());
 BuscaModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["NgModule"])({
+    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_0__compartilhado_compartilhado_module__["a" /* CompartilhadoModule */],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ButtonModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["DialogModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["DropdownModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["InputTextModule"]
+            __WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_1__compartilhado_compartilhado_module__["a" /* CompartilhadoModule */],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ButtonModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["DialogModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["DropdownModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["InputTextModule"]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__busca_component__["a" /* BuscaComponent */]],
-        exports: [__WEBPACK_IMPORTED_MODULE_2__busca_component__["a" /* BuscaComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]],
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__busca_component__["a" /* BuscaComponent */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_3__busca_component__["a" /* BuscaComponent */]]
     })
 ], BuscaModule);
 
@@ -542,21 +543,22 @@ CadastroComponent = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadastroModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_compartilhado_module__ = __webpack_require__("../../../../../src/app/compartilhado/compartilhado.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prestador_prestador_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/prestador/prestador-cadastro.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav_bar_nav_bar_module__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/cadastro.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pfisica_pfisica_component__ = __webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pjuridica_pjuridica_component__ = __webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__usuario_usuario_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/usuario/usuario-cadastro.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__administrador_administrador_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/administrador/administrador-cadastro.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_compartilhado_module__ = __webpack_require__("../../../../../src/app/compartilhado/compartilhado.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prestador_prestador_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/prestador/prestador-cadastro.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nav_bar_nav_bar_module__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/cadastro.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pfisica_pfisica_component__ = __webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pjuridica_pjuridica_component__ = __webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__usuario_usuario_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/usuario/usuario-cadastro.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__administrador_administrador_cadastro_component__ = __webpack_require__("../../../../../src/app/cadastro/administrador/administrador-cadastro.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -577,51 +579,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var CadastroModule = (function () {
     function CadastroModule() {
     }
     return CadastroModule;
 }());
 CadastroModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_6__angular_core__["NgModule"])({
+    Object(__WEBPACK_IMPORTED_MODULE_7__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_7__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_3__nav_bar_nav_bar_module__["a" /* NavBarModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_0__compartilhado_compartilhado_module__["a" /* CompartilhadoModule */],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["AutoCompleteModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["ButtonModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["CalendarModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["CodeHighlighterModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["ConfirmDialogModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["DataTableModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["DropdownModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["EditorModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["FieldsetModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["InputMaskModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["InputSwitchModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["InputTextareaModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["InputTextModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["MenubarModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["MenuModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["PanelModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["PasswordModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["PickListModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["RadioButtonModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["TabViewModule"]
+            __WEBPACK_IMPORTED_MODULE_8__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_6__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_4__nav_bar_nav_bar_module__["a" /* NavBarModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_1__compartilhado_compartilhado_module__["a" /* CompartilhadoModule */],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["AutoCompleteModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["ButtonModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["CalendarModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["CodeHighlighterModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["ConfirmDialogModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["DataTableModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["DropdownModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["EditorModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["FieldsetModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["InputMaskModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["InputSwitchModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["InputTextareaModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["InputTextModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["MenubarModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["MenuModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["PanelModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["PasswordModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["PickListModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["RadioButtonModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__["TabViewModule"]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_9__cadastro_component__["a" /* CadastroComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__pfisica_pfisica_component__["a" /* PFisicaComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__pjuridica_pjuridica_component__["a" /* PJuridicaComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__usuario_usuario_cadastro_component__["a" /* UsuarioCadastroComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__administrador_administrador_cadastro_component__["a" /* AdministradorCadastroComponent */],
-            __WEBPACK_IMPORTED_MODULE_2__prestador_prestador_cadastro_component__["a" /* PrestadorCadastroComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__cadastro_component__["a" /* CadastroComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__pfisica_pfisica_component__["a" /* PFisicaComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__pjuridica_pjuridica_component__["a" /* PJuridicaComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__usuario_usuario_cadastro_component__["a" /* UsuarioCadastroComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__administrador_administrador_cadastro_component__["a" /* AdministradorCadastroComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__prestador_prestador_cadastro_component__["a" /* PrestadorCadastroComponent */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_2__compartilhado_services_dropdown_service__["a" /* DropdownService */], __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]]
     })
 ], CadastroModule);
 
@@ -659,15 +662,16 @@ module.exports = "<div class=\"ui-g\">\n  <div class=\"ui-g-12\">\n    <h3 class
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PFisicaComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -684,17 +688,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PFisicaComponent = (function () {
-    function PFisicaComponent(confirmationService, dropdownService, formBuilder, http, router) {
+    function PFisicaComponent(confirmationService, categoriaServicoService, dropdownService, formBuilder, http, router) {
         var _this = this;
         this.confirmationService = confirmationService;
+        this.categoriaServicoService = categoriaServicoService;
         this.dropdownService = dropdownService;
         this.formBuilder = formBuilder;
         this.http = http;
         this.router = router;
         this.msgs = [];
-        this.dropdownService.getCategorias()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getCategorias()
+            .then(function (dados) {
             _this.categoriasI = dados;
             _this.categorias1 = [];
             _this.categorias2 = [];
@@ -726,11 +732,11 @@ var PFisicaComponent = (function () {
     }
     PFisicaComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
-            nomeCompleto: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]],
-            email: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
-            usuario: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]],
-            senha: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].minLength(6)]],
-            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].minLength(6)]],
+            nomeCompleto: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
+            email: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
+            usuario: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
+            senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
+            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
             tipo_usuario: [1],
             prestador: [false],
         });
@@ -739,34 +745,34 @@ var PFisicaComponent = (function () {
         var qtd = 1;
         if (this.formulario.controls['prestador'].value) {
             this.formulario.get('tipo_usuario').patchValue(2);
-            this.formulario.addControl("prestadorDados", this.formBuilder.group({
-                cpf: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                rg: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]],
-                sexo: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                dataNascimento: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]],
+            this.formulario.addControl('prestadorDados', this.formBuilder.group({
+                cpf: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                rg: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
+                sexo: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                dataNascimento: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
                 telefone: this.formBuilder.group({
-                    telefone1: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                    telefone2: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+                    telefone1: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    telefone2: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
                 }),
                 endereco: this.formBuilder.group({
-                    cep: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                    estado: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                    cidade: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                    bairro: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                    logradouro: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+                    cep: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    estado: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    cidade: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    bairro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                    logradouro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
                     complemento: [null],
-                    numero: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+                    numero: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
                 }),
                 servicosPrestados: this.formBuilder.array([
                     this.createServico(qtd)
                 ]),
                 qtdServicos: [qtd],
-                descricao: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+                descricao: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
             }));
         }
         else {
             this.formulario.get('tipo_usuario').patchValue(1);
-            this.formulario.removeControl("prestadorDados");
+            this.formulario.removeControl('prestadorDados');
         }
         return this.formulario.controls['prestador'].value;
     };
@@ -779,7 +785,7 @@ var PFisicaComponent = (function () {
             accept: function () {
                 _this.msgs = [{ severity: 'info', summary: 'Confirmado', detail: 'Cadastro cancelado' }];
                 _this.formulario.reset();
-                //this.router.navigate(['/home']);
+                // this.router.navigate(['/home']);
             },
             reject: function () {
                 _this.msgs = [{ severity: 'info', summary: 'Cancelado', detail: 'Cancelamento não concluído' }];
@@ -789,20 +795,12 @@ var PFisicaComponent = (function () {
     PFisicaComponent.prototype.salvar = function () {
         var _this = this;
         this.confirmationService.confirm({
-            message: 'Confirma os dados do cadastro?',
             header: 'Confirmar cadastro',
+            message: 'Confirma os dados do cadastro?',
             icon: 'fa fa-question-circle',
             accept: function () {
                 console.log(_this.formulario);
                 if (_this.formulario.valid) {
-                    _this.http
-                        .post('https://httpbin.org/post', JSON.stringify(_this.formulario.value))
-                        .map(function (res) { return res; })
-                        .subscribe(function (dados) {
-                        console.log(dados);
-                        // this.formulario.reset();
-                    }, function (error) { return alert('erro'); });
-                    _this.submitted = true;
                     _this.msgs = [];
                     _this.msgs = [{
                             severity: 'success',
@@ -811,13 +809,12 @@ var PFisicaComponent = (function () {
                         }];
                 }
                 else {
-                    console.log("formulário inválido");
+                    console.log('formulário inválido');
                     _this.checkFormValidations(_this.formulario);
                     if (_this.formulario.controls['senha'].value !== _this.formulario.controls['conf_senha'].value) {
-                        _this.formulario.controls['senha'].markAsDirty;
-                        _this.formulario.controls['conf_senha'].markAsDirty;
+                        _this.formulario.controls['senha'].markAsDirty();
+                        _this.formulario.controls['conf_senha'].markAsDirty();
                     }
-                    _this.submitted = false;
                     _this.msgs = [];
                     _this.msgs = [{
                             severity: 'error',
@@ -842,7 +839,7 @@ var PFisicaComponent = (function () {
             console.log(field);
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
@@ -865,48 +862,47 @@ var PFisicaComponent = (function () {
     };
     PFisicaComponent.prototype.buscarServicos = function (i) {
         var _this = this;
-        this.dropdownService.getServicos()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getServicos(this.formulario.get('prestadorDados.servicosPrestados').value[i].categoria.id)
+            .then(function (dados) {
             _this.servicosI = dados;
-            if (i == 0) {
+            if (i === 0) {
                 _this.servicos1 = [];
             }
-            else if (i == 1) {
+            else if (i === 1) {
                 _this.servicos2 = [];
             }
-            else if (i == 2) {
+            else if (i === 2) {
                 _this.servicos3 = [];
             }
-            console.log(_this.formulario.get('prestadorDados.servicosPrestados').value[i]);
-            var sCategoria = _this.formulario.get('prestadorDados.servicosPrestados').value[i].categoria.id;
+            // console.log(this.formulario.get('prestadorDados.servicosPrestados').value[i]);
             for (var index = 0; index < dados.length; index++) {
-                if ((sCategoria == dados[index].idCategoria) && i == 0) {
+                if (i === 0) {
                     _this.servicos1.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
-                else if ((sCategoria == dados[index].idCategoria) && i == 1) {
+                else if (i === 1) {
                     _this.servicos2.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
-                else if ((sCategoria == dados[index].idCategoria) && i == 2) {
+                else if (i === 2) {
                     _this.servicos3.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
@@ -916,8 +912,8 @@ var PFisicaComponent = (function () {
     PFisicaComponent.prototype.createServico = function (qtd) {
         return this.formBuilder.group({
             id: [qtd],
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            servico: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            servico: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
         });
     };
     PFisicaComponent.prototype.addServico = function () {
@@ -953,13 +949,13 @@ var PFisicaComponent = (function () {
     PFisicaComponent.prototype.consultaCEP = function () {
         var _this = this;
         var cep = this.formulario.get('prestadorDados.endereco.cep').value;
-        //Nova variável "cep" somente com dígitos.
+        // Nova variável "cep" somente com dígitos.
         cep = cep.replace(/\D/g, '');
-        //Verifica se campo cep possui valor informado.
-        if (cep != "") {
-            //Expressão regular para validar o CEP.
+        // Verifica se campo cep possui valor informado.
+        if (cep !== '') {
+            // Expressão regular para validar o CEP.
             var validacep = /^[0-9]{8}$/;
-            //Valida o formato do CEP.
+            // Valida o formato do CEP.
             if (validacep.test(cep)) {
                 this.resetDataForm();
                 this.http.get("//viacep.com.br/ws/" + cep + "/json")
@@ -1004,16 +1000,16 @@ var PFisicaComponent = (function () {
     return PFisicaComponent;
 }());
 PFisicaComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
         selector: 'app-pfisica',
         template: __webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.html"),
         styles: [__webpack_require__("../../../../../src/app/cadastro/pfisica/pfisica.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"]]
+        providers: [__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _f || Object])
 ], PFisicaComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=pfisica.component.js.map
 
 /***/ }),
@@ -1048,15 +1044,16 @@ module.exports = "<div class=\"ui-g\">\n  <div class=\"ui-g-12\">\n    <h3 class
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PJuridicaComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1073,17 +1070,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PJuridicaComponent = (function () {
-    function PJuridicaComponent(confirmationService, dropdownService, formBuilder, http, router) {
+    function PJuridicaComponent(confirmationService, categoriaServicoService, dropdownService, formBuilder, http, router) {
         var _this = this;
         this.confirmationService = confirmationService;
+        this.categoriaServicoService = categoriaServicoService;
         this.dropdownService = dropdownService;
         this.formBuilder = formBuilder;
         this.http = http;
         this.router = router;
         this.msgs = [];
-        this.dropdownService.getCategorias()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getCategorias()
+            .then(function (dados) {
             _this.categoriasI = dados;
             _this.categorias1 = [];
             _this.categorias2 = [];
@@ -1116,33 +1115,32 @@ var PJuridicaComponent = (function () {
     PJuridicaComponent.prototype.ngOnInit = function () {
         var qtd = 1;
         this.formulario = this.formBuilder.group({
-            email: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
-            usuario: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]],
-            senha: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].minLength(6)]],
-            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].minLength(6)]],
-            usuario_tipo: [{ "id": 3,
-                    "nome": "Empresa" }],
-            cnpj: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            nomeFantasia: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            razaoSocial: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            email: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
+            usuario: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]],
+            senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
+            conf_senha: [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(6)]],
+            tipo_usuario: [3],
+            cnpj: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            nomeFantasia: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            razaoSocial: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
             telefone: this.formBuilder.group({
-                telefone1: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                telefone2: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+                telefone1: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                telefone2: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
             }),
             endereco: this.formBuilder.group({
-                cep: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                estado: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                cidade: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                bairro: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                logradouro: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                complemento: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-                numero: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+                cep: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                estado: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                cidade: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                bairro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                logradouro: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                complemento: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                numero: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
             }),
             servicosPrestados: this.formBuilder.array([
                 this.createServico(qtd)
             ]),
             qtdServicos: [qtd],
-            descricao: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+            descricao: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
         });
     };
     /* passwordConfirming(c: AbstractControl): { invalid: boolean } {
@@ -1159,7 +1157,7 @@ var PJuridicaComponent = (function () {
             accept: function () {
                 _this.msgs = [{ severity: 'info', summary: 'Confirmado', detail: 'Cadastro cancelado' }];
                 _this.formulario.reset();
-                //this.router.navigate(['/home']);
+                // this.router.navigate(['/home']);
             },
             reject: function () {
                 _this.msgs = [{ severity: 'info', summary: 'Cancelado', detail: 'Cancelamento não concluído' }];
@@ -1191,11 +1189,11 @@ var PJuridicaComponent = (function () {
                         }];
                 }
                 else {
-                    console.log("formulário inválido");
+                    console.log('formulário inválido');
                     _this.checkFormValidations(_this.formulario);
                     if (_this.formulario.controls['senha'].value !== _this.formulario.controls['conf_senha'].value) {
-                        _this.formulario.controls['senha'].markAsDirty;
-                        _this.formulario.controls['conf_senha'].markAsDirty;
+                        _this.formulario.controls['senha'].markAsDirty();
+                        _this.formulario.controls['conf_senha'].markAsDirty();
                     }
                     _this.submitted = false;
                     _this.msgs = [];
@@ -1222,7 +1220,7 @@ var PJuridicaComponent = (function () {
             console.log(field);
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
@@ -1245,48 +1243,47 @@ var PJuridicaComponent = (function () {
     };
     PJuridicaComponent.prototype.buscarServicos = function (i) {
         var _this = this;
-        this.dropdownService.getServicos()
-            .subscribe(function (dados) {
+        this.categoriaServicoService.getServicos(this.formulario.get('servicosPrestados').value[i].categoria.id)
+            .then(function (dados) {
             _this.servicosI = dados;
-            if (i == 0) {
+            if (i === 0) {
                 _this.servicos1 = [];
             }
-            else if (i == 1) {
+            else if (i === 1) {
                 _this.servicos2 = [];
             }
-            else if (i == 2) {
+            else if (i === 2) {
                 _this.servicos3 = [];
             }
-            console.log(_this.formulario.get('servicosPrestados').value[i]);
-            var sCategoria = _this.formulario.get('servicosPrestados').value[i].categoria.id;
+            // console.log(this.formulario.get('servicosPrestados').value[i]);
             for (var index = 0; index < dados.length; index++) {
-                if ((sCategoria == dados[index].idCategoria) && i == 0) {
+                if (i === 0) {
                     _this.servicos1.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
-                else if ((sCategoria == dados[index].idCategoria) && i == 1) {
+                else if (i === 1) {
                     _this.servicos2.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
-                else if ((sCategoria == dados[index].idCategoria) && i == 2) {
+                else if (i === 2) {
                     _this.servicos3.push({
                         label: dados[index].nome,
                         value: {
                             id: dados[index].id,
                             nome: dados[index].nome,
-                            idCategoria: dados[index].idCategoria
+                            id_categoria: dados[index].id_categoria
                         }
                     });
                 }
@@ -1296,8 +1293,8 @@ var PJuridicaComponent = (function () {
     PJuridicaComponent.prototype.createServico = function (qtd) {
         return this.formBuilder.group({
             id: [qtd],
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            servico: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            servico: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
         });
     };
     PJuridicaComponent.prototype.addServico = function () {
@@ -1333,13 +1330,13 @@ var PJuridicaComponent = (function () {
     PJuridicaComponent.prototype.consultaCEP = function () {
         var _this = this;
         var cep = this.formulario.get('endereco.cep').value;
-        //Nova variável "cep" somente com dígitos.
+        // Nova variável "cep" somente com dígitos.
         cep = cep.replace(/\D/g, '');
-        //Verifica se campo cep possui valor informado.
-        if (cep != "") {
-            //Expressão regular para validar o CEP.
+        // Verifica se campo cep possui valor informado.
+        if (cep !== '') {
+            // Expressão regular para validar o CEP.
             var validacep = /^[0-9]{8}$/;
-            //Valida o formato do CEP.
+            // Valida o formato do CEP.
             if (validacep.test(cep)) {
                 this.resetDataForm();
                 this.http.get("//viacep.com.br/ws/" + cep + "/json")
@@ -1380,16 +1377,16 @@ var PJuridicaComponent = (function () {
     return PJuridicaComponent;
 }());
 PJuridicaComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
         selector: 'app-pjuridica',
         template: __webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.html"),
         styles: [__webpack_require__("../../../../../src/app/cadastro/pjuridica/pjuridica.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"]]
+        providers: [__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__compartilhado_services_dropdown_service__["a" /* DropdownService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _f || Object])
 ], PJuridicaComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=pjuridica.component.js.map
 
 /***/ }),
@@ -1521,7 +1518,7 @@ UsuarioCadastroComponent = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompartilhadoModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_categoria_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_dropdown_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/dropdown.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__form_debug_form_debug_component__ = __webpack_require__("../../../../../src/app/compartilhado/form-debug/form-debug.component.ts");
@@ -1560,7 +1557,7 @@ CompartilhadoModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__form_debug_form_debug_component__["a" /* FormDebugComponent */],
             __WEBPACK_IMPORTED_MODULE_6__error_component_error_component__["a" /* ErrorComponent */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__services_dropdown_service__["a" /* DropdownService */], __WEBPACK_IMPORTED_MODULE_0__services_categoria_service__["a" /* CategoriaService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_2__services_dropdown_service__["a" /* DropdownService */], __WEBPACK_IMPORTED_MODULE_0__services_categoria_servico_service__["a" /* CategoriaServicoService */]]
     })
 ], CompartilhadoModule);
 
@@ -1717,11 +1714,26 @@ var CategoriaServico = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/compartilhado/services/categoria.service.ts":
+/***/ "../../../../../src/app/compartilhado/models/servico.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriaService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Servico; });
+var Servico = (function () {
+    function Servico() {
+    }
+    return Servico;
+}());
+
+//# sourceMappingURL=servico.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/compartilhado/services/categoria-servico.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriaServicoService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/add/operator/toPromise.js");
@@ -1738,27 +1750,67 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CategoriaService = (function () {
-    function CategoriaService(http) {
+var CategoriaServicoService = (function () {
+    function CategoriaServicoService(http) {
         this.http = http;
     }
-    CategoriaService.prototype.getCategorias = function () {
+    CategoriaServicoService.prototype.getCategoria = function (id) {
+        return this.http.get("http://sobralservicos.com.br/categoria/" + id)
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    CategoriaServicoService.prototype.getServico = function (id) {
+        return this.http.get("http://sobralservicos.com.br/servico/" + id)
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    CategoriaServicoService.prototype.getCategorias = function () {
         return this.http.get('http://sobralservicos.com.br/categorias')
             .toPromise().then(function (response) { return response.json(); });
     };
-    CategoriaService.prototype.createCategoria = function (categoria) {
+    CategoriaServicoService.prototype.getServicos = function (id) {
+        return this.http.get("http://sobralservicos.com.br/categoria/" + id + "/servicos")
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    CategoriaServicoService.prototype.getAllServicos = function () {
+        return this.http.get("http://sobralservicos.com.br/servicos")
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    CategoriaServicoService.prototype.createCategoria = function (categoria) {
         return this.http.post('http://sobralservicos.com.br/categorias', categoria)
             .toPromise();
     };
-    return CategoriaService;
+    CategoriaServicoService.prototype.createServico = function (servico) {
+        return this.http.post('http://sobralservicos.com.br/servicos', servico)
+            .toPromise();
+    };
+    CategoriaServicoService.prototype.updateCategoria = function (id, categoria) {
+        return this.http.post("http://sobralservicos.com.br/categoria/" + id + "/", categoria)
+            .toPromise();
+    };
+    CategoriaServicoService.prototype.updateServico = function (id, servico) {
+        return this.http.post("http://sobralservicos.com.br/servico/" + id, servico)
+            .toPromise();
+    };
+    CategoriaServicoService.prototype.deleteCategoria = function (id) {
+        return this.http.delete("http://sobralservicos.com.br/categoria/" + id)
+            .toPromise();
+    };
+    CategoriaServicoService.prototype.deleteServico = function (id) {
+        return this.http.delete("http://sobralservicos.com.br/servico/" + id)
+            .toPromise();
+    };
+    return CategoriaServicoService;
 }());
-CategoriaService = __decorate([
+CategoriaServicoService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */]) === "function" && _a || Object])
-], CategoriaService);
+], CategoriaServicoService);
 
 var _a;
-//# sourceMappingURL=categoria.service.js.map
+//# sourceMappingURL=categoria-servico.service.js.map
 
 /***/ }),
 
@@ -1790,14 +1842,6 @@ var DropdownService = (function () {
     };
     DropdownService.prototype.getCidadesBr = function () {
         return this.http.get('assets/data/cidadesbr.json')
-            .map(function (res) { return res.json(); });
-    };
-    DropdownService.prototype.getCategorias = function () {
-        return this.http.get('assets/data/categorias.json')
-            .map(function (res) { return res.json(); });
-    };
-    DropdownService.prototype.getServicos = function () {
-        return this.http.get('assets/data/servicos.json')
             .map(function (res) { return res.json(); });
     };
     return DropdownService;
@@ -2136,7 +2180,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loginExterno\">\n  <p-growl [value]=\"msgs\" sticky=\"sticky\"></p-growl>\n\n  <form [formGroup]=\"formulario\" (ngSubmit)=\"login()\">\n    <p-panel header=\"Login\">\n      <div class=\"ui-g ui-fluid loginInterno\">\n        <div class=\"ui-g-12\">\n          <h3>Entre com seus dados</h3>\n        </div>\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-12\">\n            <div class=\"ui-inputgroup\">\n              <span class=\"ui-inputgroup-addon\">\n                <i class=\"fa fa-user\"></i>\n              </span>\n              <input type=\"text\" pInputText formControlName=\"usuario\" placeholder=\"Usuário ou email\">\n            </div>\n          </div>\n\n          <div class=\"ui-g-12\">\n            <app-error-component [showError]=\"checkFieldValidation('usuario')\" errorMsg=\"Usuario é requerido\">\n            </app-error-component>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-12\">\n            <div class=\"ui-inputgroup\">\n              <span class=\"ui-inputgroup-addon\">\n                <i class=\"fa fa-key\"></i>\n              </span>\n              <input type=\"password\" formControlName=\"senha\" pInputText placeholder=\"Senha\">\n            </div>\n\n            <div class=\"ui-g-12\">\n              <app-error-component [showError]=\"checkFieldValidation('senha')\" errorMsg=\"Senha é requerida\">\n              </app-error-component>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-6\">\n            <p-dialog header=\"Esqueceu senha?\" [(visible)]=\"mostrar\" \n              [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n              <form [formGroup]=\"recsenha\" (ngSubmit)=\"enviar()\">\n                <fieldset>\n                  <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12\">\n                      <div class=\"ui-g-4\">\n                        <label>Email *: </label>\n                      </div>\n\n                      <div class=\"ui-g-8\">\n                        <input type=\"email\" pInputText formControlName=\"email\">\n                      </div>\n\n                      <div class=\"ui-g-12\">\n                        <div class=\"ui-message ui-messages-error ui-corner-all\" *ngIf=\"!recsenha.controls['email'].valid && recsenha.controls['email'].dirty\">\n                          <i class=\"fa fa-close\"></i>\n                          <span *ngIf=\"recsenha.controls['email'].errors['required']\">Email requirido;</span>\n                          <span *ngIf=\"recsenha.controls['email'].errors['email']\">Digite um email válido;</span>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"ui-g-8\"></div>\n                    <div class=\"ui-g-4\">\n                        <button pButton type=\"submit\" (click)=\"enviar()\" label=\"Enviar\"></button>\n                    </div>\n                  </div>\n                </fieldset>\n              </form>\n            </p-dialog>\n\n            <a (click)=\"mostrarRec()\" class=\"link\">Esqueceu sua senha?</a>\n          </div>\n          <div class=\"ui-g-6\">\n            <a href=\"/cadastro\">Cadastrar-se</a>\n          </div>\n        </div>\n\n        <div class=\"ui-g-4\"></div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"submit\" label=\"Entrar\"></button>\n        </div>\n        <div class=\"ui-g-4\"></div>\n      </div>\n    </p-panel>\n  </form>\n  <app-form-debug [form]=\"formulario\"></app-form-debug>\n</div>"
+module.exports = "<div class=\"loginExterno\">\n  <p-growl [value]=\"msgs\" sticky=\"sticky\"></p-growl>\n\n  <form [formGroup]=\"formulario\" (ngSubmit)=\"login()\">\n    <p-panel header=\"Login\">\n      <div class=\"ui-g ui-fluid loginInterno\">\n        <div class=\"ui-g-12\">\n          <h3>Entre com seus dados</h3>\n        </div>\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-12\">\n            <div class=\"ui-inputgroup\">\n              <span class=\"ui-inputgroup-addon\">\n                <i class=\"fa fa-user\"></i>\n              </span>\n              <input type=\"text\" pInputText formControlName=\"usuario\" placeholder=\"Usuário ou email\">\n            </div>\n          </div>\n\n          <div class=\"ui-g-12\">\n            <app-error-component [showError]=\"checkFieldValidation('usuario')\" errorMsg=\"Usuario é requerido\">\n            </app-error-component>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-12\">\n            <div class=\"ui-inputgroup\">\n              <span class=\"ui-inputgroup-addon\">\n                <i class=\"fa fa-key\"></i>\n              </span>\n              <input type=\"password\" formControlName=\"senha\" pInputText placeholder=\"Senha\">\n            </div>\n\n            <div class=\"ui-g-12\">\n              <app-error-component [showError]=\"checkFieldValidation('senha')\" errorMsg=\"Senha é requerida\">\n              </app-error-component>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-6\">\n            <p-dialog header=\"Esqueceu senha?\" [(visible)]=\"mostrar\" \n              [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n              <form [formGroup]=\"recsenha\" (ngSubmit)=\"enviar()\">\n                <fieldset>\n                  <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12\">\n                      <div class=\"ui-g-4\">\n                        <label>Email *: </label>\n                      </div>\n\n                      <div class=\"ui-g-8\">\n                        <input type=\"email\" pInputText formControlName=\"email\">\n                      </div>\n\n                      <div class=\"ui-g-12\">\n                        <div class=\"ui-message ui-messages-error ui-corner-all\" *ngIf=\"!recsenha.controls['email'].valid && recsenha.controls['email'].dirty\">\n                          <i class=\"fa fa-close\"></i>\n                          <span *ngIf=\"recsenha.controls['email'].errors['required']\">Email requirido;</span>\n                          <span *ngIf=\"recsenha.controls['email'].errors['email']\">Digite um email válido;</span>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"ui-g-8\"></div>\n                    <div class=\"ui-g-4\">\n                        <button pButton type=\"submit\" (click)=\"enviar()\" label=\"Enviar\"></button>\n                    </div>\n                  </div>\n                </fieldset>\n              </form>\n            </p-dialog>\n\n            <a (click)=\"mostrarRec()\" class=\"link\">Esqueceu sua senha?</a>\n          </div>\n          <div class=\"ui-g-6\">\n            <a href=\"#/home/user/cadastro\">Cadastrar-se</a>\n          </div>\n        </div>\n\n        <div class=\"ui-g-4\"></div>\n        <div class=\"ui-g-4\">\n          <button pButton type=\"submit\" label=\"Entrar\"></button>\n        </div>\n        <div class=\"ui-g-4\"></div>\n      </div>\n    </p-panel>\n  </form>\n  <app-form-debug [form]=\"formulario\"></app-form-debug>\n</div>"
 
 /***/ }),
 
@@ -2164,7 +2208,6 @@ var LoginComponent = (function () {
     function LoginComponent(formBuilder, http) {
         this.formBuilder = formBuilder;
         this.http = http;
-        this.mostrar = false;
         this.msgs = [];
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -2724,7 +2767,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/servicos/crud/crud.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p-dataTable [value]=\"categorias\">\n  <p-column field=\"id\" header=\"id\" [sortable]=\"true\"></p-column>\n  <p-column field=\"nome\" header=\"Nome\" [sortable]=\"true\"></p-column>\n  <p-footer>\n    <div class=\"ui-helper-clearfix\" style=\"width:100%\">\n      <button type=\"button\" pButton icon=\"fa-plus\" style=\"float:left\" (click)=\"newCategoria()\" label=\"Nova categoria\">\n      </button>\n    </div>\n  </p-footer>\n</p-dataTable>\n\n<p-dialog header=\"Categoria\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\">\n  <form [formGroup]=\"formulario\" (ngSubmit)=\"salvar()\">\n    <div class=\"ui-grid ui-grid-responsive ui-fluid\">\n      <div class=\"ui-grid-row\">\n        <div class=\"ui-grid-col-4\">\n          <label for=\"categoria\">Categoria</label>\n        </div>\n\n        <div class=\"ui-grid-col-8\">\n          <input pInputText formControlName=\"categoria\" />\n        </div>\n      </div>\n      <div class=\"ui-grid-row\">\n        <div class=\"ui-grid-col-4\"></div>\n        <div class=\"ui-grid-col-8\">\n          <app-error-component [showError]=\"checkFieldValidation('categoria')\" errorMsg=\"Preencha a categoria\">\n          </app-error-component>\n        </div>\n      </div>\n    </div>\n    <p-footer>\n      <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\n        <button type=\"button\" pButton icon=\"fa-close\" (click)=\"voltar()\" label=\"Cancelar\"></button>\n        <button type=\"submit\" pButton icon=\"fa-check\" (click)=\"salvar()\" label=\"Salvar\"></button>\n      </div>\n    </p-footer>\n  </form>\n</p-dialog>"
+module.exports = "<p-growl [value]=\"msgs\" sticky=\"sticky\"></p-growl>\n\n<p-confirmDialog icon=\"fa fa-question-circle\" width=\"425\" #cd>\n  <p-footer>\n    <button type=\"button\" pButton icon=\"fa-close\" label=\"Não\" (click)=\"cd.reject()\"></button>\n    <button type=\"button\" pButton icon=\"fa-check\" label=\"Sim\" (click)=\"cd.accept()\"></button>\n  </p-footer>\n</p-confirmDialog>\n\n<p-dataTable [value]=\"categoriasServico\" *ngIf=\"mostrarCategorias\">\n  <p-column field=\"nome\" header=\"Nome\" [sortable]=\"true\"></p-column>\n  <p-column styleClass=\"col-button\">\n    <ng-template pTemplate=\"header\">\n      Editar\n    </ng-template>\n    <ng-template let-categoria=\"rowData\" pTemplate=\"body\">\n      <button type=\"button\" pButton (click)=\"dialogUpCategoria(categoria)\" icon=\"fa-pencil-square-o\"></button>\n    </ng-template>\n  </p-column>\n  <p-column styleClass=\"col-button\">\n    <ng-template pTemplate=\"header\">\n      Excluir\n    </ng-template>\n    <ng-template let-categoria=\"rowData\" pTemplate=\"body\">\n      <button type=\"button\" pButton (click)=\"removerCategoria(categoria)\" icon=\"fa-trash-o\"></button>\n    </ng-template>\n  </p-column>\n\n  <p-footer>\n    <div class=\"ui-helper-clearfix\" style=\"width:100%\">\n      <button type=\"button\" pButton icon=\"fa-plus\" style=\"float:left\" (click)=\"dialogAddCategoria()\" label=\"Nova categoria\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-plus\" style=\"float:left\" (click)=\"dialogAddServico()\" label=\"Novo Serviço\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-eye\" style=\"float:right\" (click)=\"showCategorias()\" label=\"Mostrar categorias\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-eye\" style=\"float:right\" (click)=\"showServicos()\" label=\"Mostrar serviços\">\n      </button>\n    </div>\n  </p-footer>\n</p-dataTable>\n\n<p-dataTable [value]=\"servicos\" *ngIf=\"mostrarServicos\">\n  <p-column field=\"nome\" header=\"Nome\" [sortable]=\"true\"></p-column>\n  <p-column field=\"id_categoria\" header=\"id_categoria\" [sortable]=\"true\"></p-column>\n  <p-column styleClass=\"col-button\">\n    <ng-template pTemplate=\"header\">\n      Editar\n    </ng-template>\n    <ng-template let-servico=\"rowData\" pTemplate=\"body\">\n      <button type=\"button\" pButton (click)=\"dialogUpServico(servico)\" icon=\"fa-pencil-square-o\"></button>\n    </ng-template>\n  </p-column>\n  <p-column styleClass=\"col-button\">\n    <ng-template pTemplate=\"header\">\n      Excluir\n    </ng-template>\n    <ng-template let-servico=\"rowData\" pTemplate=\"body\">\n      <button type=\"button\" pButton (click)=\"removerServico(servico)\" icon=\"fa-trash-o\"></button>\n    </ng-template>\n  </p-column>\n\n  <p-footer>\n    <div class=\"ui-helper-clearfix\" style=\"width:100%\">\n      <button type=\"button\" pButton icon=\"fa-plus\" style=\"float:left\" (click)=\"dialogAddCategoria()\" label=\"Nova categoria\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-plus\" style=\"float:left\" (click)=\"dialogAddServico()\" label=\"Novo Serviço\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-eye\" style=\"float:right\" (click)=\"showCategorias()\" label=\"Mostrar categorias\">\n      </button>\n\n      <button type=\"button\" pButton icon=\"fa-eye\" style=\"float:right\" (click)=\"showServicos()\" label=\"Mostrar serviços\">\n      </button>\n    </div>\n  </p-footer>\n</p-dataTable>\n\n<p-dialog header=\"Nova categoria\" [(visible)]=\"displayAddCategoria\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"\n  [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n  <form [formGroup]=\"categoriaForm\" (ngSubmit)=\"salvarCategoria()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Categoria *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <input pInputText formControlName=\"categoria\" />\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria', categoriaForm)\" errorMsg=\"Preencha com alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n      </div>\n      <p-footer>\n        <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\n          <button type=\"button\" pButton icon=\"fa-close\" (click)=\"voltarAddCategoria()\" label=\"Cancelar\"></button>\n          <button type=\"submit\" pButton icon=\"fa-check\" (click)=\"salvarCategoria()\" label=\"Salvar\"></button>\n        </div>\n      </p-footer>\n    </fieldset>\n  </form>\n</p-dialog>\n\n<p-dialog header=\"Editar categoria\" [(visible)]=\"displayUpCategoria\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"\n  [contentStyle]=\"{'overflow':'visible'}\" [width]=\"500\">\n  <form [formGroup]=\"categoriaForm\" (ngSubmit)=\"editarCategoria()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Categoria *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <input pInputText formControlName=\"categoria\" />\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria', categoriaForm)\" errorMsg=\"Preencha com alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n      </div>\n      <p-footer>\n        <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\n          <button type=\"button\" pButton icon=\"fa-close\" (click)=\"voltarUpCategoria()\" label=\"Cancelar\"></button>\n          <button type=\"submit\" pButton icon=\"fa-check\" (click)=\"editarCategoria()\" label=\"Salvar\"></button>\n        </div>\n      </p-footer>\n    </fieldset>\n  </form>\n</p-dialog>\n\n<p-dialog header=\"Novo serviço\" [(visible)]=\"displayAddServico\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [contentStyle]=\"{'overflow':'visible'}\"\n  [width]=\"500\">\n  <form [formGroup]=\"servicoForm\" (ngSubmit)=\"salvarServico()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Categoria *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <p-dropdown [options]=\"categorias\" filter=\"filter\" formControlName=\"categoria\" [style]=\"{'width':'320px'}\" placeholder=\"Selecione uma categoria\">\n            </p-dropdown>\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria', servicoForm)\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Serviço *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <input pInputText formControlName=\"servico\" />\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('servico', servicoForm)\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n      </div>\n      <p-footer>\n        <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\n          <button type=\"button\" pButton icon=\"fa-close\" (click)=\"voltarAddServico()\" label=\"Cancelar\"></button>\n          <button type=\"submit\" pButton icon=\"fa-check\" (click)=\"salvarServico()\" label=\"Salvar\"></button>\n        </div>\n      </p-footer>\n    </fieldset>\n  </form>\n</p-dialog>\n\n<p-dialog header=\"Edita serviço\" [(visible)]=\"displayUpServico\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [contentStyle]=\"{'overflow':'visible'}\"\n  [width]=\"500\">\n  <form [formGroup]=\"servicoForm\" (ngSubmit)=\"editarServico()\">\n    <fieldset>\n      <div class=\"ui-g ui-fluid\">\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Categoria *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <p-dropdown [options]=\"categorias\" filter=\"filter\" formControlName=\"categoria\" [style]=\"{'width':'320px'}\" placeholder=\"Selecione uma categoria\">\n            </p-dropdown>\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('categoria', servicoForm)\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n\n        <div class=\"ui-g-12\">\n          <div class=\"ui-g-3\">\n            <label for=\"categoria\">Serviço *:</label>\n          </div>\n\n          <div class=\"ui-g-9\">\n            <input pInputText formControlName=\"servico\" />\n          </div>\n\n          <div class=\"ui-g-offset-3 ui-g-9\">\n            <app-error-component [showError]=\"checkFieldValidation('servico', servicoForm)\" errorMsg=\"Selecione alguma categoria\">\n            </app-error-component>\n          </div>\n        </div>\n      </div>\n      <p-footer>\n        <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\n          <button type=\"button\" pButton icon=\"fa-close\" (click)=\"voltarUpServico()\" label=\"Cancelar\"></button>\n          <button type=\"submit\" pButton icon=\"fa-check\" (click)=\"editarServico()\" label=\"Salvar\"></button>\n        </div>\n      </p-footer>\n    </fieldset>\n  </form>\n</p-dialog>"
 
 /***/ }),
 
@@ -2733,11 +2776,14 @@ module.exports = "<p-dataTable [value]=\"categorias\">\n  <p-column field=\"id\"
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrudComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_servico_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/categoria-servico.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_servico_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/servico.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_servico_service__ = __webpack_require__("../../../../../src/app/compartilhado/services/categoria-servico.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__compartilhado_models_categoria_servico_model__ = __webpack_require__("../../../../../src/app/compartilhado/models/categoria-servico.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2752,79 +2798,271 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var CrudComponent = (function () {
-    function CrudComponent(categoriaService, formBuilder, http) {
+    function CrudComponent(categoriaServicoService, confirmationService, formBuilder, http) {
         var _this = this;
-        this.categoriaService = categoriaService;
+        this.categoriaServicoService = categoriaServicoService;
+        this.confirmationService = confirmationService;
         this.formBuilder = formBuilder;
         this.http = http;
-        this.categoriaService
+        this.msgs = [];
+        this.mostrarCategorias = true;
+        this.mostrarServicos = false;
+        this.categoriaServicoService
             .getCategorias()
-            .then(function (categorias) { return _this.categorias = categorias; });
+            .then(function (dados) {
+            _this.categoriasServico = dados;
+            _this.categorias = [];
+            for (var index = 0; index < dados.length; index++) {
+                _this.categorias.push({
+                    label: dados[index].nome,
+                    value: {
+                        id: dados[index].id,
+                        nome: dados[index].nome
+                    }
+                });
+            }
+        });
+        this.categoriaServicoService
+            .getAllServicos()
+            .then(function (servicos) { return _this.servicos = servicos; });
     }
     CrudComponent.prototype.ngOnInit = function () {
-        this.formulario = this.formBuilder.group({
-            categoria: [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
+        this.categoriaForm = this.formBuilder.group({
+            id: [null],
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["Validators"].required]
+        });
+        this.servicoForm = this.formBuilder.group({
+            id: [null],
+            categoria: [null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["Validators"].required],
+            servico: [null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["Validators"].required]
         });
     };
-    CrudComponent.prototype.checkFieldValidation = function (field) {
-        return !this.formulario.get(field).valid && (this.formulario.get(field).dirty);
+    CrudComponent.prototype.reloadPage = function () {
+        window.location.reload();
+    };
+    CrudComponent.prototype.checkFieldValidation = function (field, formulario) {
+        return !formulario.get(field).valid && (formulario.get(field).dirty);
     };
     CrudComponent.prototype.checkFormValidations = function (formGroup) {
         var _this = this;
         Object.keys(formGroup.controls).forEach(function (field) {
             var control = formGroup.get(field);
             control.markAsDirty();
-            if (control instanceof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]) {
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormGroup"]) {
                 _this.checkFormValidations(control);
             }
         });
     };
-    CrudComponent.prototype.voltar = function () {
-        this.formulario.reset();
-        this.displayDialog = false;
-    };
-    CrudComponent.prototype.salvar = function () {
-        var _this = this;
-        if (this.formulario.valid) {
-            this.http
-                .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-                .map(function (res) { return res; })
-                .subscribe(function (dados) {
-                //console.log(dados);
-                //console.log(this.formulario.value);
-                var categoria = new __WEBPACK_IMPORTED_MODULE_0__compartilhado_models_categoria_servico_model__["a" /* CategoriaServico */]();
-                categoria.nome = _this.formulario.value.categoria;
-                _this.addCategoria(categoria);
-                _this.formulario.reset();
-                _this.displayDialog = false;
-                window.location.reload();
-            }, function (error) { return alert('erro'); });
-            this.submitted = true;
+    CrudComponent.prototype.salvarCategoria = function () {
+        if (this.categoriaForm.valid) {
+            // console.log(dados);
+            // console.log(this.formulario.value);
+            var categoria = new __WEBPACK_IMPORTED_MODULE_3__compartilhado_models_categoria_servico_model__["a" /* CategoriaServico */]();
+            categoria.nome = this.categoriaForm.value.categoria;
+            this.addCategoria(categoria);
+            this.categoriaForm.reset();
+            this.displayAddCategoria = false;
+            window.location.reload();
+            this.msgs = [{
+                    severity: 'success',
+                    summary: 'Nova categoria',
+                    detail: 'Categoria adicionada'
+                }];
         }
         else {
-            this.checkFormValidations(this.formulario);
-            this.submitted = false;
+            this.checkFormValidations(this.categoriaForm);
         }
     };
-    CrudComponent.prototype.newCategoria = function () {
-        this.displayDialog = true;
+    CrudComponent.prototype.editarCategoria = function () {
+        if (this.categoriaForm.valid) {
+            // console.log(dados);
+            // console.log(this.formulario.value);
+            var categoria = new __WEBPACK_IMPORTED_MODULE_3__compartilhado_models_categoria_servico_model__["a" /* CategoriaServico */]();
+            categoria.id = this.categoriaForm.value.id;
+            categoria.nome = this.categoriaForm.value.categoria;
+            this.updateCategoria(categoria);
+            this.categoriaForm.reset();
+            this.displayUpCategoria = false;
+            window.location.reload();
+            this.msgs = [{
+                    severity: 'success',
+                    summary: 'Concluído',
+                    detail: 'Categoria editada'
+                }];
+        }
+        else {
+            this.checkFormValidations(this.categoriaForm);
+        }
+    };
+    CrudComponent.prototype.salvarServico = function () {
+        if (this.servicoForm.valid) {
+            // console.log(dados);
+            // console.log(this.formulario.value);
+            var servico = new __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_servico_model__["a" /* Servico */]();
+            servico.nome = this.servicoForm.value.servico;
+            servico.id_categoria = this.servicoForm.value.categoria.id;
+            this.addServico(servico);
+            this.servicoForm.reset();
+            this.displayAddServico = false;
+            window.location.reload();
+            this.msgs = [{
+                    severity: 'success',
+                    summary: 'Novo serviço',
+                    detail: 'Serviço adicionado'
+                }];
+        }
+        else {
+            this.checkFormValidations(this.servicoForm);
+        }
+    };
+    CrudComponent.prototype.editarServico = function () {
+        if (this.servicoForm.valid) {
+            // console.log(dados);
+            // console.log(this.formulario.value);
+            var servico = new __WEBPACK_IMPORTED_MODULE_1__compartilhado_models_servico_model__["a" /* Servico */]();
+            servico.id = this.servicoForm.value.id;
+            servico.nome = this.servicoForm.value.servico;
+            servico.id_categoria = this.servicoForm.value.categoria.id;
+            this.updateServico(servico);
+            this.servicoForm.reset();
+            this.displayUpServico = false;
+            window.location.reload();
+            this.msgs = [{
+                    severity: 'success',
+                    summary: 'Concluído',
+                    detail: 'Serviço editado'
+                }];
+        }
+        else {
+            this.checkFormValidations(this.servicoForm);
+        }
+    };
+    CrudComponent.prototype.showCategorias = function () {
+        if (this.mostrarCategorias === false) {
+            this.mostrarServicos = false;
+            this.mostrarCategorias = true;
+        }
+    };
+    CrudComponent.prototype.showServicos = function () {
+        if (this.mostrarServicos === false) {
+            this.mostrarCategorias = false;
+            this.mostrarServicos = true;
+        }
+    };
+    CrudComponent.prototype.voltarAddCategoria = function () {
+        this.categoriaForm.reset();
+        this.displayAddCategoria = false;
+    };
+    CrudComponent.prototype.voltarUpCategoria = function () {
+        this.categoriaForm.reset();
+        this.displayUpCategoria = false;
+    };
+    CrudComponent.prototype.voltarAddServico = function () {
+        this.servicoForm.reset();
+        this.displayAddServico = false;
+    };
+    CrudComponent.prototype.voltarUpServico = function () {
+        this.servicoForm.reset();
+        this.displayUpServico = false;
+    };
+    CrudComponent.prototype.dialogAddCategoria = function () {
+        this.displayAddCategoria = true;
+    };
+    CrudComponent.prototype.dialogUpCategoria = function (categoria) {
+        this.categoriaForm.controls['id'].patchValue(categoria.id);
+        this.categoriaForm.controls['categoria'].patchValue(categoria.nome);
+        this.displayUpCategoria = true;
+    };
+    CrudComponent.prototype.dialogAddServico = function () {
+        this.displayAddServico = true;
+    };
+    CrudComponent.prototype.dialogUpServico = function (servico) {
+        this.servicoForm.controls['id'].patchValue(servico.id);
+        this.servicoForm.controls['servico'].patchValue(servico.nome);
+        this.servicoForm.controls['categoria'].patchValue({
+            'id': servico.id_categoria
+        });
+        this.displayUpServico = true;
+    };
+    CrudComponent.prototype.removerCategoria = function (categoria) {
+        var _this = this;
+        this.confirmationService.confirm({
+            header: 'Excluir categoria',
+            message: 'Deseja mesmo excluir esta categoria?',
+            accept: function () {
+                _this.deleteCategoria(categoria);
+                window.location.reload();
+                _this.msgs = [{
+                        severity: 'success',
+                        summary: 'Confirmado',
+                        detail: 'Categoria excluída'
+                    }];
+            },
+            reject: function () {
+                _this.msgs = [{
+                        severity: 'info',
+                        summary: 'Cancelado',
+                        detail: 'Categoria não excluída'
+                    }];
+            }
+        });
+    };
+    CrudComponent.prototype.removerServico = function (servico) {
+        var _this = this;
+        this.confirmationService.confirm({
+            header: 'Excluir servico',
+            message: 'Deseja mesmo excluir este serviço?',
+            accept: function () {
+                _this.deleteServico(servico);
+                window.location.reload();
+                _this.msgs = [{
+                        severity: 'success',
+                        summary: 'Confirmado',
+                        detail: 'Serviço excluído'
+                    }];
+            },
+            reject: function () {
+                _this.msgs = [{
+                        severity: 'info',
+                        summary: 'Cancelado',
+                        detail: 'Serviço não excluído'
+                    }];
+            }
+        });
     };
     CrudComponent.prototype.addCategoria = function (categoria) {
-        this.categoriaService.createCategoria(categoria);
+        this.categoriaServicoService.createCategoria(categoria);
+    };
+    CrudComponent.prototype.addServico = function (servico) {
+        this.categoriaServicoService.createServico(servico);
+    };
+    CrudComponent.prototype.updateCategoria = function (categoria) {
+        this.categoriaServicoService.updateCategoria(categoria.id, categoria);
+    };
+    CrudComponent.prototype.updateServico = function (servico) {
+        this.categoriaServicoService.updateServico(servico.id, servico);
+    };
+    CrudComponent.prototype.deleteCategoria = function (categoria) {
+        this.categoriaServicoService.deleteCategoria(categoria.id);
+    };
+    CrudComponent.prototype.deleteServico = function (servico) {
+        this.categoriaServicoService.deleteServico(servico.id);
     };
     return CrudComponent;
 }());
 CrudComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_6__angular_core__["Component"])({
         selector: 'app-crud',
         template: __webpack_require__("../../../../../src/app/servicos/crud/crud.component.html"),
         styles: [__webpack_require__("../../../../../src/app/servicos/crud/crud.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_service__["a" /* CategoriaService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_service__["a" /* CategoriaService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__compartilhado_services_categoria_servico_service__["a" /* CategoriaServicoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_primeng_primeng__["ConfirmationService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _d || Object])
 ], CrudComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=crud.component.js.map
 
 /***/ }),
@@ -2850,7 +3088,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/servicos/servicos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-administrador></app-nav-administrador>\n\n<div class=\"servico\">\n  <p-tabView>\n    <p-tabPanel header=\"Adicionar categoria\">\n\n\n\n    </p-tabPanel>\n    <p-tabPanel header=\"Adicionar servico\">\n\n\n    </p-tabPanel>\n    <p-tabPanel header=\"Listar\" selected=\"true\">\n        \n      <app-crud></app-crud>\n        \n    </p-tabPanel>\n    <p-tabPanel header=\"Aprovar\">\n\n\n    </p-tabPanel>\n    <p-tabPanel header=\"Relatório de busca\">\n\n\n    </p-tabPanel>\n\n    <p-tabPanel header=\"Adicionar Plano\">\n\n\n    </p-tabPanel>\n  </p-tabView>\n</div>"
+module.exports = "<app-nav-administrador></app-nav-administrador>\n\n<div class=\"servico\">\n  <p-tabView>\n    <p-tabPanel header=\"Categorias e Serviços\" selected=\"true\">\n\n      <app-crud></app-crud>\n\n    </p-tabPanel>\n    <p-tabPanel header=\"Aprovar\">\n\n\n    </p-tabPanel>\n    <p-tabPanel header=\"Relatório de busca\">\n\n\n    </p-tabPanel>\n\n    <p-tabPanel header=\"Adicionar Plano\">\n\n\n    </p-tabPanel>\n  </p-tabView>\n</div>"
 
 /***/ }),
 
@@ -2967,6 +3205,7 @@ ServicosModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["TabMenuModule"],
             __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["TabViewModule"]
         ],
+        providers: [__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]],
         declarations: [__WEBPACK_IMPORTED_MODULE_4__servicos_component__["a" /* ServicosComponent */], __WEBPACK_IMPORTED_MODULE_8__crud_crud_component__["a" /* CrudComponent */]]
     })
 ], ServicosModule);

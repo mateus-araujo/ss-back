@@ -11,6 +11,10 @@ use App\Servico;
 
 class ServicoController extends Controller
 {
+    public function getServicos($categoria_id) {
+        return Servico::where('id_categoria', $categoria_id)->get();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +22,7 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        //
+        return Servico::all();
     }
 
     /**
@@ -46,7 +50,7 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Servico::create($request->all());
     }
 
     /**
@@ -98,6 +102,9 @@ class ServicoController extends Controller
      */
     public function destroy($id)
     {
-        Servico::find($id);
+        $catServ = Servico::find($id);
+        $catServ->delete();
+
+        return $catServ;
     }
 }
