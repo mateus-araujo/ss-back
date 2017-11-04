@@ -22,9 +22,9 @@ class CreatePrestadoresTable extends Migration
             $table->string("cidade");
             $table->string("estado");
             $table->string("numero");
-            $table->integer("id_serv_1")->unsigned();
-            $table->integer("id_serv_2")->unsigned();
-            $table->integer("id_serv_3")->unsigned();
+            $table->integer("id_serv_1")->unsigned()->nullable();
+            $table->integer("id_serv_2")->unsigned()->nullable();
+            $table->integer("id_serv_3")->unsigned()->nullable();
             $table->string("descricao");
             $table->string("avaliacao");
             $table->string("foto");

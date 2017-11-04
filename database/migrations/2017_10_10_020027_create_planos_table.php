@@ -16,7 +16,9 @@ class CreatePlanosTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->float('preco');
-            $table->integer('pessoa'); 
+            $table->integer('pessoa');
+
+            $table->timestamps();
         });
     }
 

@@ -16,6 +16,21 @@ Route::get('/', function () {
 });
 
 
+// Usuários
+Route::get('user/{id}', 'UsuarioController@show');
+Route::delete('user/{id}', 'UsuarioController@destroy');
+Route::post('user/{id}', 'UsuarioController@update');
+Route::post('user', 'UsuarioController@create');
+
+// Prestadores
+Route::get('prestadores', 'UsuarioController@getPrestadores');
+Route::get('prestador/{id}', 'UsuarioController@getPrestador');
+
+// Auth
+Route::post('login', 'UsuarioController@doLogin');
+Route::get('checkLogin', 'UsuarioController@checkLogin');
+Route::get('logout', 'UsuarioController@doLogout');
+
 // Categorias
 Route::resource('categorias', 'CategoriaServicoController', ['only' => [
     'index', 'store'
@@ -33,14 +48,6 @@ Route::get('servico/{id}', 'ServicoController@show');
 Route::delete('servico/{id}', 'ServicoController@destroy');
 Route::post('servico/{id}', 'ServicoController@update');
 
-// Usuários
-Route::get('user/{id}', 'UsuarioController@show');
-Route::delete('user/{id}', 'UsuarioController@destroy');
-Route::post('user/{id}', 'UsuarioController@update');
-Route::post('user', 'UsuarioController@create');
-Route::post('login', 'UsuarioController@doLogin');
-Route::get('logout', 'UsuarioController@doLogout');
-
 // Servicos prestados
 Route::get('servicoprestado/{id}', 'ServicoPrestadoController@show');
 Route::delete('servicoprestado/{id}', 'ServicoPrestadoController@destroy');
@@ -48,10 +55,11 @@ Route::post('servicoprestado/{id}', 'ServicoPrestadoController@update');
 Route::post('servicoprestado', 'ServicoPrestadoController@create');
 
 // Planos
-Route::post('plano', 'PlanoController@create');
+Route::post('plano', 'PlanoController@store');
+Route::get('planos', 'PlanoController@index');
+Route::get('plano/{id}', 'PlanoController@show');
 Route::delete('plano/{id}', 'PlanoController@destroy');
 Route::post('plano/{id}', 'PlanoController@update');
-Route::get('plano/{id}', 'PlanoController@show');
 
 // Pagamentos
 Route::post('pagamento', 'PagamentoController@create');
@@ -76,5 +84,10 @@ Route::post('busca', 'BuscaController@create');
 Route::post('busca/{id}', 'BuscaController@update');
 Route::delete('busca/{id}', 'BuscaController@destroy');
 Route::get('busca/{id}', 'BuscaController@show');
+Route::post('busca', "BuscaController@search");
 
-
+// Avaliação 
+Route::post('avaliacao', "AvaliacaoController@create");
+Route::post('avaliacao/{id}', "AvaliacaoController@update");
+Route::delete('avaliacao/{id}', "AvaliacaoController@destroy");
+Route::get('avaliacao/{id}', "AvaliacaoController@show");

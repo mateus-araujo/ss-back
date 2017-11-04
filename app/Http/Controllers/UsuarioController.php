@@ -25,6 +25,10 @@ class UsuarioController extends Controller
             throw new \Exception("Não foi possível realizar o login. Tente novamente");
     }
 
+    public function checkLogin(){
+        return Auth::user();
+    }
+
     public function doLogout()
     {
         Auth::logout();
@@ -49,22 +53,21 @@ class UsuarioController extends Controller
      */
     public function create(Request $request)
     {
-        $alreadyUser = Usuario::where('email', '=', $request->email)->first();
+        $alreadyUser = Usuario::where('email', '=', $request->email )->first();
         if ($alreadyUser)
             throw new \Exception("Este email já está sendo usado");
 
         $usuario = new Usuario();
 
-        $usuario->name = $request->name;
-        $usuario->username = $request->username;
-        $usuario->email = $request->email;
-        $usuario->password = bcrypt($request->password);
+        $usuario->name =  $request->name;
+        $usuario->username =  $request->username;
+        $usuario->email =  $request->email;
+        $usuario->password =  bcrypt($request->password);
         $usuario->tipo_usuario = $request->tipo_usuario;
 
         $usuario->save();
 
         Auth::login($usuario);
-
 
         // Se o tipo do usuário for prestador
         if ($usuario->tipo_usuario == "2") {
@@ -75,12 +78,12 @@ class UsuarioController extends Controller
 
             $prestador->usuario_id = $usuarioId[0]->id;
             $prestador->telefone = $request->telefone;
-            $prestador->celular = $request->celular;
-            $prestador->cep = $request->cep;
-            $prestador->bairro = $request->bairro;
-            $prestador->cidade = $request->cidade;
-            $prestador->estado = $request->estado;
-            $prestador->numero = $request->numero;
+            $prestador->celular  = $request->celular;
+            $prestador->cep  = $request->cep;
+            $prestador->bairro  = $request->bairro;
+            $prestador->cidade  = $request->cidade;
+            $prestador->estado  = $request->estado;
+            $prestador->numero  = $request->numero;
 
             $prestador->id_serv_1 = $request->id_serv_1;
             $prestador->id_serv_2 = $request->id_serv_2;
@@ -105,7 +108,8 @@ class UsuarioController extends Controller
 
                 $pessoaJur->save();
 
-            } else { // pessoa física
+            }
+            else { // pessoa física
                 $pessoaFisica = new PessoaFisica();
                 $pessoaFisica->cpf = $request->cpf;
                 $pessoaFisica->sexo = $request->sexo;
@@ -114,7 +118,6 @@ class UsuarioController extends Controller
 
                 $pessoaFisica->save();
             }
-
         }
 
         return Auth::user();
@@ -142,6 +145,27 @@ class UsuarioController extends Controller
     {
 
         return Usuario::find($id);
+    }
+
+    public function getPrestador($id) {
+        $usuario = \DB::table("usuarios")->
+        join("prestadores", "usuarios.id", "=", "prestadores.usuario_id")->
+        join("pessoas_juridicas", "prestadores.id", "=", "pessoas_juridicas.prestador_id")->
+        where("usuarios.id", "=", $id)->get();
+
+        if (count($usuario) == 0) { // a pessoa não é jurídica e sim física
+          $usuario = \DB::table("usuarios")->
+          join("prestadores", "usuarios.id", "=", "prestadores.usuario_id")->
+          join("pessoas_fisicas", "prestadores.id", "=", "pessoas_fisicas.prestador_id")->
+          where("usuarios.id", "=", $id)->get();          
+        }
+
+        return $usuario;
+    }
+
+    public function getPrestadores()
+    {
+        return Usuario::where('tipo_usuario', 2)->get();
     }
 
     /**

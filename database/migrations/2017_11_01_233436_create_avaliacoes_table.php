@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnunciosTable extends Migration
+class CreateAvaliacoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateAnunciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('anuncios', function (Blueprint $table) {
+        Schema::create('avaliacoes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("path_to_banner");
+            $table->integer("valor"); 
+            $table->integer("id_usuario_avaliador")->unsigned();
             $table->integer("id_prestador")->unsigned();
-            
-            $table->timestamps();
+            $table->timestamp('created_at');
 
+            $table->foreign("id_usuario_avaliador")->references("id")->on("usuarios")->onDelete("cascade");
             $table->foreign("id_prestador")->references("id")->on("prestadores")->onDelete("cascade");
         });
     }
@@ -30,6 +31,6 @@ class CreateAnunciosTable extends Migration
      */
     public function down()
     {
-        Schema::drop("anuncios");
+        Schema::drop("avaliacoes");
     }
 }

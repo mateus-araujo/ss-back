@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Plano;
+use App\Avaliacao;
 
-class PlanoController extends Controller
+class AvaliacaoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class PlanoController extends Controller
      */
     public function index()
     {
-        return Plano::all();
+        
     }
 
     /**
@@ -28,15 +28,15 @@ class PlanoController extends Controller
      */
     public function create(Request $request)
     {
-        $plano = new Plano();
+        $avaliacao = new Avaliacao();
 
-        $plano->nome  = $request->nome;
-        $plano->preco = $request->preco;
-        $plano->pessoa = $request->pessoa;
+        $avaliacao->valor = $request->valor;
+        $avaliacao->id_usuario_avaliador = $request->id_usuario_avaliador;
+        $avaliacao->id_prestador = $request->id_prestador;
 
-        $plano->save();
+        $avaliacao->save();
 
-        return $plano;
+        return $avaliacao;
     }
 
     /**
@@ -47,7 +47,7 @@ class PlanoController extends Controller
      */
     public function store(Request $request)
     {
-        return Plano::create($request->all());
+        //
     }
 
     /**
@@ -58,7 +58,9 @@ class PlanoController extends Controller
      */
     public function show($id)
     {
-        return Plano::find($id);
+        $avaliacao = Avaliacao::find($id);
+
+        return $avaliacao;
     }
 
     /**
@@ -67,9 +69,17 @@ class PlanoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $avaliacao = Avaliacao::find($id);
+
+        $avaliacao->valor = $request->valor;
+        $avaliacao->id_usuario_avaliador = $request->id_usuario_avaliador;
+        $avaliacao->id_prestador = $request->id_prestador;
+
+        $avaliacao->save();
+
+        return $avaliacao;
     }
 
     /**
@@ -81,15 +91,7 @@ class PlanoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $plano = Plano::find($id);
-
-        $plano->nome  = $request->nome;
-        $plano->preco = $request->preco;
-        $plano->pessoa = $request->pessoa;
-
-        $plano->save();
-
-        return $plano;
+        //
     }
 
     /**
@@ -100,9 +102,10 @@ class PlanoController extends Controller
      */
     public function destroy($id)
     {
-        $plano = Plano::find($id);
-        $plano->delete();
+        $avaliacao = Avaliacao::find($id);
 
-        return $plano;
+        $avaliacao->delete();
+
+        return true;
     }
 }

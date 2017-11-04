@@ -20,6 +20,8 @@ class CreatePagamentosTable extends Migration
             $table->date("data_vencimento");
             $table->date("data_pagamento");
 
+            $table->timestamps();
+
             $table->foreign("id_plano")->references("id")->on("planos")->onDelete("cascade");
             $table->foreign("id_prestador")->references("id")->on("prestadores")->onDelete("cascade");
         });

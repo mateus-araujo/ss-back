@@ -19,6 +19,8 @@ class CreatePessoasFisicasTable extends Migration
             $table->string('curriculum');
             
             $table->integer("prestador_id")->unsigned();
+            
+            $table->timestamps();
 
             $table->foreign("prestador_id")->references("id")->on("prestadores")->onDelete("cascade");
         });

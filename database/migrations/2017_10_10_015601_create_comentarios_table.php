@@ -18,6 +18,8 @@ class CreateComentariosTable extends Migration
             $table->integer('id_comentarista')->unsigned();
             
             $table->integer('id_prestador')->unsigned();
+
+            $table->timestamps();
             
             $table->foreign("id_comentarista")->references("id")->on("usuarios")->onDelete("cascade");
              $table->foreign("id_prestador")->references("id")->on("usuarios")->onDelete("cascade");
