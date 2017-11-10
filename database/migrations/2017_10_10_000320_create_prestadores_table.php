@@ -17,11 +17,18 @@ class CreatePrestadoresTable extends Migration
             $table->integer("usuario_id")->unsigned();
             $table->string("telefone");
             $table->string("celular");
-            $table->string("cep");
+            $table->string("logradouro");
             $table->string("bairro");
             $table->string("cidade");
             $table->string("estado");
             $table->string("numero");
+            $table->string("complemento");
+            $table->string("cep");
+            $table->string("data_nasc");
+            $table->string("rg");
+
+            $table->integer("aprovado")->default(1); // já 
+            
             $table->integer("id_serv_1")->unsigned()->nullable();
             $table->integer("id_serv_2")->unsigned()->nullable();
             $table->integer("id_serv_3")->unsigned()->nullable();

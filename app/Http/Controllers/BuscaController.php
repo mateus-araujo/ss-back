@@ -21,7 +21,7 @@ class BuscaController extends Controller
      */
     public function index()
     {
-        //
+    	return Busca::all();
     }
 
     /**
@@ -48,9 +48,21 @@ class BuscaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+    public function searchLog($id_categoria, $id_servico, $texto_busca) {
+    	$busca  = new Busca();
+
+    	$busca->id_categoria = $id_categoria;
+    	$busca->id_servico = $id_servico;
+    	$busca->texto_busca = $texto_busca;
+
+    	$busca->save();
+
+    	return true;
+    }
 
     public function search (Request $request) {
-
+    	
     	$texto_busca = $request->valor;
 
     	$id_categoria = $request->id_categoria;
@@ -84,7 +96,7 @@ class BuscaController extends Controller
 
     	if ($id_servico) 
     		$a->where("servicos.id", "=", $id_servico);
-
+    	
     	if (strcmp("", $texto_busca) !== 0) {
     		$a = $a->where("nome", "like", "%". $texto_busca . "%")
     		->orWhere("name", "like", "%". $texto_busca . "%")
@@ -115,27 +127,31 @@ class BuscaController extends Controller
     	);
 
     	$x = [];
-        $y = [];
+    	$y = [];
 
     	if ($id_categoria) 
     		$b = $b->where("servicos.id_categoria", "=", $id_categoria);
 
     	if ($id_servico) 
     		$b = $b->where("servicos.id", "=", $id_servico);
-
+    	
     	if (strcmp("", $texto_busca) !== 0) {
     		$b = $b->where("nome", "like", "%". $texto_busca . "%")
     		->orWhere("name", "like", "%". $texto_busca . "%")
     		->orWhere("email", "like", "%". $texto_busca . "%");    
     	}
-
+    	
     	$x = $a->get();
     	$y = $b->get();
 
-    	return array_merge(json_decode($x, true), json_decode($y, true));
+    	$this->searchLog($id_categoria, $id_servico, $texto_busca);
 
-    	// return array_merge($x, $y);
+    	return array_merge(json_decode($x, true), json_decode($y, true));            
     }
+
+
+
+
 
     public function store(Request $request)
     {
@@ -198,4 +214,5 @@ class BuscaController extends Controller
 
     	return true;
     }
+
 }

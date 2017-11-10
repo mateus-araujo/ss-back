@@ -16,7 +16,7 @@ class CreateServicosPrestadosTable extends Migration
             $table->increments('id');
             $table->integer("id_servico")->unsigned();
             $table->integer("id_prestador")->unsigned();
-            $table->date('data');
+            $table->string('data');
             $table->string('solicitante');
             $table->boolean('confirmado');
             

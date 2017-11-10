@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // Usuários
 Route::get('user/{id}', 'UsuarioController@show');
 Route::delete('user/{id}', 'UsuarioController@destroy');
@@ -25,10 +24,11 @@ Route::post('user', 'UsuarioController@create');
 // Prestadores
 Route::get('prestadores', 'UsuarioController@getPrestadores');
 Route::get('prestador/{id}', 'UsuarioController@getPrestador');
+Route::post('aprovarPrestador/{id}', 'UsuarioController@aprovarPrestador');
 
 // Auth
 Route::post('login', 'UsuarioController@doLogin');
-Route::get('checkLogin', 'UsuarioController@checkLogin');
+Route::get('check_login', 'UsuarioController@checkLogin');
 Route::get('logout', 'UsuarioController@doLogout');
 
 // Categorias
@@ -49,10 +49,10 @@ Route::delete('servico/{id}', 'ServicoController@destroy');
 Route::post('servico/{id}', 'ServicoController@update');
 
 // Servicos prestados
-Route::get('servicoprestado/{id}', 'ServicoPrestadoController@show');
-Route::delete('servicoprestado/{id}', 'ServicoPrestadoController@destroy');
-Route::post('servicoprestado/{id}', 'ServicoPrestadoController@update');
-Route::post('servicoprestado', 'ServicoPrestadoController@create');
+Route::get('servico_prestado/{id}', 'ServicoPrestadoController@show');
+Route::delete('servico_prestado/{id}', 'ServicoPrestadoController@destroy');
+Route::post('servico_prestado/{id}', 'ServicoPrestadoController@update');
+Route::post('servico_prestado', 'ServicoPrestadoController@create');
 
 // Planos
 Route::post('plano', 'PlanoController@store');
@@ -84,10 +84,18 @@ Route::post('busca', 'BuscaController@create');
 Route::post('busca/{id}', 'BuscaController@update');
 Route::delete('busca/{id}', 'BuscaController@destroy');
 Route::get('busca/{id}', 'BuscaController@show');
-Route::post('busca', "BuscaController@search");
+Route::post('busca', 'BuscaController@search');
+Route::get('buscas', 'BuscaController@index');
 
 // Avaliação 
-Route::post('avaliacao', "AvaliacaoController@create");
-Route::post('avaliacao/{id}', "AvaliacaoController@update");
-Route::delete('avaliacao/{id}', "AvaliacaoController@destroy");
-Route::get('avaliacao/{id}', "AvaliacaoController@show");
+Route::post('avaliacao', 'AvaliacaoController@create');
+Route::post('avaliacao/{id}', 'AvaliacaoController@update');
+Route::delete('avaliacao/{id}', 'AvaliacaoController@destroy');
+Route::get('avaliacao/{id}', 'AvaliacaoController@show');
+
+
+Route::get("/solicitacoes_servicos/{id_prestador}", "ServicoPrestadoController@getSolicitacoesServicos");
+
+// Passar por parâmetro: um campo id, presente na lista de serviços solicitados na página do prestador .
+// Passar também um campo valor, que pode ser true ou false.
+Route::post("/confirmar_servico", "ServicoPrestadoController@confirmarServico");

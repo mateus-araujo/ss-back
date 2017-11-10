@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 
 use App\ServicoPrestado;
 
@@ -31,9 +31,14 @@ class ServicoPrestadoController extends Controller
     {
         $servPrest = new ServicoPrestado();
 
-        $servPrest->id_servico = $request->id_servico;
-        $servPrest->id_prestador = $request->id_prestador;
-        $servPrest->solicitante = $request->solicitante;
+        //$servPrest->id_servico = $request->id_servico;
+        //$servPrest->id_prestador = $request->id_prestador;
+        dd($request->id_solicitante);
+        dd($request->id_servico);
+        dd($request->id_prestador);
+
+
+        $servPrest->id_solicitante = $request->id_solicitante;
         $servPrest->confirmado = false;
 
         $servPrest->save();
@@ -58,6 +63,23 @@ class ServicoPrestadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function getSolicitacoesServicos($id_prestador) {
+        return \DB::table("servicos_prestados")->where("id_prestador", "=", $id_prestador)->where("confirmado", "=", false)->get();
+    }
+
+    public function confirmarServico(Request $request) {
+
+        if (strcmp("true", $request->valor) == 0)
+            \DB::table("servicos_prestados")->where("id", "=", $request->id)->update(["confirmado" => true]);
+
+        else 
+            \DB::table("servicos_prestados")->where("id", "=", $request->id)->update(["confirmado" => false]);
+
+        return "true";      
+    }
+
     public function show($id)
     {
         return ServicoPrestado::find($id);
@@ -69,8 +91,8 @@ class ServicoPrestadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    
+    public function edit($id) {
         
     }
 
